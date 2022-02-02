@@ -23,8 +23,6 @@ body {
 .list-items {
   display: flex;
   list-style: none;
-  /* align-items: center;
-    height: 49px; */
 }
 .list-items a{
     text-decoration: none;
