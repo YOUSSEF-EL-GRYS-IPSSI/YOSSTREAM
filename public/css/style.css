@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+.header-nav {
+  background-color: rgb(0, 0, 0);
+  height: 70px;
+  line-height: 70px;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.list-items {
+  display: flex;
+  list-style: none;
+}
+.list-items a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.list-items li {
+  margin-left: 25px;
+  font-size: 25px;
+}
+#connect {
+  background-color: rgb(155, 20, 20);
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.slider{
+  background-image: url("../img/movie.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  height: 100vh;
+}
