@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} | Back Office | Gestions des séries {% endblock %}
+
+{% block body %}
+
+    <h1>Modification de la série</h1>
+
+    <a href="{{ path('series_afficher') }}">Retour à la liste des séries</a>
+
+    {{ include('series/supprimer.html.twig') }}
+
+{% endblock %}

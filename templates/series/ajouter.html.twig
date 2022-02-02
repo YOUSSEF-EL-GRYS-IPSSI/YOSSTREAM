@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une série{% endblock %}
+
+{% block body %}
+
+    <h1>Ajouter une série</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.title) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+
+
+    <a href="{{ path('series_afficher') }}">Retour à la liste des séries</a>
+    
+{% endblock %}
