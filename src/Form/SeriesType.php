@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Genre;
 use App\Entity\Series;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,6 +44,15 @@ class SeriesType extends AbstractType
             "attr" => [
                 "row" => 4
             ]
+        ])
+
+        ->add('genre', EntityType::class, [ // Relation
+            "class" => Genre::class,        // Avec quelle class
+            "choice_label" => "type",           // Quelle propriété afficher
+            "placeholder" => "Sélectionnez un genre",
+            "multiple" => true,
+            "expanded" => true
+            //"expanded" => true soit radio pour une valeur soit checkbox pour plusieurs valeurs 
         ])
         ;
         

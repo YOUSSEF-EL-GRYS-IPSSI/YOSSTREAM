@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} | Back Office | Gestions des genres {% endblock %}
+
+{% block body %}
+
+
+    <a href="{{ path('genre_afficher') }}">Retour à la liste des genres</a>
+
+    {{ form_start(form) }}
+
+        {{ form_row(form.type) }}
+
+    {{ form_rest(form) }}
+
+    <input type="submit" value="Modifier" class="">
+
+{{ form_end(form) }}
+
+
+{% endblock %}

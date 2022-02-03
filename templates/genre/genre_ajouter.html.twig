@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Ajouter un genre {% endblock %}
+
+{% block body %}
+
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.type) }}
+
+    <input type="submit" value="Ajouter" class="">
+
+    {{ form_end(form) }}
+
+
+
+    <a href="{{ path('genre_afficher') }}">Retour à la liste des genres</a>
+    
+{% endblock %}
