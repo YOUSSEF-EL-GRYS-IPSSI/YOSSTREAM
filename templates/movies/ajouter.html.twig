@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} ajouts Movies{% endblock %}
+
+{% block body %}
+    <h1>Ajout de film </h1>
+
+    {{ include('movies/_form.html.twig') }}
+
+    <a href="{{ path('movies_afficher') }}"> liste des films </a>
+{% endblock %}
