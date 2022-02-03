@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Les Films YOSSTREAM {% endblock %}
+
+{% block body %}
+    <h1> Films </h1>
+    
+    <a href="{{ path('movies_ajouter') }}">ajouter </a>
+
+    {% if movies  %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>titre</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for moviesArray in movies %}
+
+            <tr>
+                <td>{{ moviesArray.id }}</td>
+                <td>{{ moviesArray.titre }}</td>
+                <td>{{ moviesArray.description }}</td>
+                
+                
+
+                
+                  <td>  <a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>  </td> 
+                
+                <br>
+                {# <td>
+                    <a href="{{ path('movies_supprimer', {'id': moviesArray.id}) }}">supprimer</a>
+                </td> #}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Aucun fichier trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    {% endif %}
+    
+{% endblock %}
