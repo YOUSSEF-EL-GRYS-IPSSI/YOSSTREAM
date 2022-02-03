@@ -6,7 +6,7 @@
 
     <a class="btn btn-primary mt-3" href="{{ path("series_ajouter") }}">Ajouter</a>
 
-{% for notification in app.flashes("success") %}
+    {% for notification in app.flashes("success") %}
 
     <div class="col-md-6 mx-auto text-center alert alert-success">
 
@@ -16,13 +16,14 @@
     
 {% endfor %}
 
-    <table class="table table-striped table-hover text-center mt-3">
+    <table class="">
 
         <thead class="bg-dark text-white">
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Description</th>
+                <th>Genre</th>
                 <th>Image</th> 
                 <th>Date de Création</th>
                 <th>Modifier</th>
@@ -37,6 +38,24 @@
                 <td>{{ series.id }}</td>
                 <td>{{ series.title }}</td>
                 <td>{{ series.description }}</td>
+                <td>
+                {% if series.genre[0] is defined %}{% endif %}
+
+                    {% for genre in series.genre %}
+
+                        {% if series.genre|last == genre %}
+
+                            {{ genre.type }}
+
+                        {% else %}
+
+                            {{ genre.type }} /
+                            
+                        {% endif %}
+                    
+                    {% endfor %}
+                    
+                </td>
                 <td>
 
                 {% if series.image %}
