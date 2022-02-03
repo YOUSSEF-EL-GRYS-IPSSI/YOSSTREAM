@@ -4,15 +4,17 @@
 
 {% block body %}
 
-    <h1>Ajouter une série</h1>
 
     {{ form_start(form) }}
 
     {{ form_row(form.title) }}
+
     {{ form_row(form.description) }}
+
     {{ form_row(form.image) }}
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <input type="submit" value="Ajouter" class="">
+
     {{ form_end(form) }}
 
 

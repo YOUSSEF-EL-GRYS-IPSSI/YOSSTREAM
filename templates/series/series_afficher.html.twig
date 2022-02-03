@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes les séries{% endblock %}
+
+{% block body %}
+
+    <a class="btn btn-primary mt-3" href="{{ path("series_ajouter") }}">Ajouter</a>
+
+    {% for notification in app.flashes("success") %}
+
+    <div class="col-md-6 mx-auto text-center alert alert-success">
+
+        {{notification}}
+    
+    </div>
+    
+{% endfor %}
+
+    <table class="">
+
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Genre</th>
+                <th>Image</th> 
+                <th>Date de Création</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for series in series %}
+            <tr>
+
+                <td>{{ series.id }}</td>
+                <td>{{ series.title }}</td>
+                <td>{{ series.description }}</td>
+                <td>
+                {% if series.genre[0] is defined %}{% endif %}
+
+                    {% for genre in series.genre %}
+
+                        {% if series.genre|last == genre %}
+
+                            {{ genre.type }}
+
+                        {% else %}
+
+                            {{ genre.type }} /
+                            
+                        {% endif %}
+                    
+                    {% endfor %}
+                    
+                </td>
+                <td>
+
+                {% if series.image %}
+                    
+                    <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
+                    
+                {% endif %}
+
+                </td>
+
+                <td>{{ series.dateAt|date('d/m/Y H:i:s') }}</td>
+                
+                <td>
+                    <a href="{{ path('series_modifier', {'id': series.id}) }}">Modifier</a>
+                </td>
+
+                 <td>
+                    <a href="{{ path('series_supprimer', {'id' : series.id } ) }}"
+                    onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+
+                </td>
+
+            </tr>
+
+        {% else %}
+
+            <tr>
+                <td colspan="2">Aucun fichier trouvé</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+{% endblock %}

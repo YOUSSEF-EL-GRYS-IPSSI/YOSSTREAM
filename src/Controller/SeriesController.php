@@ -17,8 +17,10 @@ class SeriesController extends AbstractController
     #[Route('/afficher', name: 'series_afficher', methods: ['GET'])]
     public function series_afficher(SeriesRepository $seriesRepository): Response
     {
-        return $this->render('series/afficher.html.twig', [
-            'series' => $seriesRepository->findAll(),
+        $series = $seriesRepository->findAll();
+        
+        return $this->render('series/series_afficher.html.twig', [
+            'series' => $series
         ]);
     }
 
@@ -26,49 +28,110 @@ class SeriesController extends AbstractController
     public function series_ajouter(Request $request, EntityManagerInterface $entityManager): Response
     {
         $series = new Series();
-        $form = $this->createForm(SeriesType::class, $series);
+
+        $form = $this->createForm(SeriesType::class, $series,  ['ajouter' => true]);
+
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
+
+            $imageFile = $form->get('image')->getData();
+
+            // S'il y a upload imageFile est un objet
+            // Sinon imageFile = null
+
+            if($imageFile) // Si un fichier a été upload
+            {
+                // Renommer l'image
+                // $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "-" .
+                // $imageFile->getClientOriginalName();
+
+                $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $imageFile->getClientOriginalExtension();
+
+                // Déplacer le fichier (image) dans le projet;
+
+                // Enregistrer le nom de l'image en bdd
+
+                $series->setImage($nameImage);
+
+
+
+            }
+            //dump($produit); 2ème étape de mes données
+            $series->setDateAt(new \DateTimeImmutable("now"));
+
             $entityManager->persist($series);
+
             $entityManager->flush();
+
+            $this->addFlash("success", "Le produit " . $series->getTitle() . " a bien été ajoutée");
 
             return $this->redirectToRoute('series_afficher', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('series/afficher.html.twig', [
-            'series' => $series,
-            'form' => $form,
+        return $this->render('series/series_ajouter.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
 
-    #[Route('/{id}/modifier', name: 'series_modifier', methods: ['GET', 'POST'])]
+    #[Route('/modifier/{id}', name: 'series_modifier', methods: ['GET', 'POST'])]
     public function series_modifier(Request $request, Series $series, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(SeriesType::class, $series);
+        $form = $this->createForm(SeriesType::class, $series, ['modifier' => true]);
+
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $imageFile = $form->get('imageFile')->getData();
+
+            // S'il y a upload imageFile est un objet
+            // Sinon imageFile = null
+
+            if($imageFile) // Si un fichier a été upload
+            {
+                // Renommer l'image
+                // $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "-" .
+                // $imageFile->getClientOriginalName();
+
+                $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $imageFile->getClientOriginalExtension();
+
+                // Déplacer le fichier (image) dans le projet;
+
+                // Enregistrer le nom de l'image en bdd
+
+                $series->setImage($nameImage);
+                
+
+
+
+            }
+            $series->setDateAt(new \DateTimeImmutable("now"));
+            $entityManager->persist($series);
+
             $entityManager->flush();
+
+            $this->addFlash("success", "La série " . $series->getTitle() . " a bien été modifiée");
 
             return $this->redirectToRoute('series_afficher', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('series/modifier.html.twig', [
-            'series' => $series,
-            'form' => $form,
+        return $this->render('series/series_modifier.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
-    #[Route('/{id}', name: 'series_supprimer', methods: ['POST'])]
-    public function series_supprimer(Request $request, Series $series, EntityManagerInterface $entityManager): Response
+    #[Route('/supprimer/{id}', name: 'series_supprimer', methods: ['GET', 'POST'])]
+    public function series_supprimer(Series $series, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('supprimer'.$series->getId(), $request->request->get('_token'))) {
+            $seriesTitle = $series->getTitle();
             $entityManager->remove($series);
             $entityManager->flush();
-        }
+        
+            $this->addFlash("success", "La série $seriesTitle a bien été supprimée");
 
-        return $this->redirectToRoute('series_afficher', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('series_afficher');
     }
 }

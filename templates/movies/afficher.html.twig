@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Toutes les séries{% endblock %}
+{% block title %} Les Films YOSSTREAM {% endblock %}
 
 {% block body %}
-    <h1>Series index</h1>
+    <h1> Films </h1>
 
     <table class="table">
         <thead>
@@ -13,11 +13,11 @@
             </tr>
         </thead>
         <tbody>
-        {% for series in series %}
+        {% for movies in movies %}
             <tr>
                 <td>{{ series.id }}</td>
                 <td>
-                    <a href="{{ path('series_modifier', {'id': series.id}) }}">Modifier</a>
+                    <a href="{{ path('movies_modifier', {'id': movies.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -28,5 +28,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('series_ajouter') }}">Modifier la série</a>
+    <a href="{{ path('movies_ajouter') }}">Modifier </a>
 {% endblock %}
