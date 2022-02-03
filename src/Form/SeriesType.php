@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -43,12 +44,32 @@ class SeriesType extends AbstractType
             ]
         ])
         ;
+        
+        if($options['ajouter'])
+            {
+                $builder->add('image', FileType::class, [
+                    "required" => false,
+                    //"multiple" => true,
+                        
+                ]);
+            }
+
+            elseif($options['modifier'])
+            {
+                $builder->add('imageFile', FileType::class, [
+                    "required" => false,
+                    "mapped" => false,
+
+                ]);
+            }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Series::class,
+            'ajouter' => false,
+            'modifier' => false
         ]);
     }
 }
