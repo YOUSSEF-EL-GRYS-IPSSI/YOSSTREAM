@@ -13,39 +13,178 @@ body {
 }
 
 .header-nav {
-  background-color: rgb(0, 0, 0);
-  height: 70px;
-  line-height: 70px;
+  width: 100%;
+  background-color: black;
 }
 
 .nav-item {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  margin: 0 auto;
+  max-width: 1450px;
+
 }
+
 .list-items {
-  display: flex;
   list-style: none;
-}
-.list-items a{
-    text-decoration: none;
-    color: #fff;
+  display: flex;
 }
 
 .list-items li {
-  margin-left: 25px;
-  font-size: 25px;
+  margin-left: 10px;
 }
+
+li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 27px;
+}
+
 #connect {
-  background-color: rgb(155, 20, 20);
+  background-color: rgb(155, 22, 22);
   border-radius: 5px;
   padding: 10px 15px;
 }
 
-.slider{
+img {
+  width: 10%;
+}
+
+.slider {
   background-image: url("../img/movie.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
   height: 100vh;
 }
+
+.slider span {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.title-slide {
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-slide h1 {
+  font-size: 50px;
+  width: 1087px;
+  text-align: center;
+}
+
+.title-slide span {
+  color: rgb(167, 13, 13);
+  font-size: 80px;
+}
+
+@media only screen and (max-width : 768px) {
+
+  .nav-item {
+    padding: 15px;
+  }
+
+}
+
+@media only screen and (max-width : 1440px) {
+
+  .nav-item {
+    width: 90%;
+  }
+
+}
+
+@media only screen and (max-width : 1024px) {
+  .nav-item {
+    width: 93%;
+  }
+
+}
+
+/* ///////////mobile//////////////// */
+@media only screen and (max-width : 427px) {
+
+  .nav-item {
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  .list-items {
+    flex-direction: column;
+  }
+
+  .list-items li {
+    padding: 10px;
+  }
+
+  .title-slide span {
+    font-size: 200%;
+  }
+
+  .title-slide h1 {
+    font-size: 150%;
+    padding: 25px;
+  }
+
+
+
+}
+
+@media only screen and (max-width : 428px) {
+
+  .nav-item {
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  #burger {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    left: -15px;
+    top: 0px;
+  }
+
+
+  .list-items {
+    flex-direction: column;
+  }
+
+  .list-items li {
+    padding: 10px;
+  }
+
+  .title-slide span {
+    font-size: 200%;
+  }
+
+  .title-slide h1 {
+    font-size: 150%;
+    padding: 25px;
+  }
+  .nav-item{
+    display: none;
+  }
+
+  /* .nav-item {
+    position: relative;
+    left: -300px;
+  } */
+
+
+
+}
+
+@media only screen and (min-width : 429px) {
+
+  #burger {
+    display: none;
+  }
+  
+
+}
+
