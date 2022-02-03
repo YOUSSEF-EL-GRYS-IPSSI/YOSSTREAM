@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} | Back Office | Gestions des séries {% endblock %}
+
+{% block body %}
+
+
+    <a href="{{ path('movies_afficher') }}">Retour à la liste des films </a>
+
+    {{ form_start(form) }}
+
+        {{ form_row(form.titre) }}
+
+        {{ form_row(form.description) }}
+
+     
+
+    {{ form_rest(form) }}
+
+    <input type="submit" value="Modifier" class="btn btn-outline-success">
+
+{{ form_end(form) }}
+
+
+{% endblock %}
+

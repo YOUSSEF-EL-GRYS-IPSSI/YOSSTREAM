@@ -19,7 +19,7 @@ class SeriesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('title', TextType::class, [ "label" => "Titre de la série",
+        ->add('titre', TextType::class, [ "label" => "Titre de la série",
         "required" => false,
         "attr" => [
             "placeholder" => "Saisir le titre de la série",

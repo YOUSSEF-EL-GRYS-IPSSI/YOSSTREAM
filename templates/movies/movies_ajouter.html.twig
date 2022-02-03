@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} ajouts Movies{% endblock %}
+
+{% block body %}
+    
+
+
+    
+    {{ form_start(form) }}
+
+    {{ form_row(form.titre) }}
+
+    {{ form_row(form.description) }}
+
+    {{ form_row(form.image) }}
+
+    <input type="submit" value="Ajouter" class="btn">
+
+    {{ form_end(form) }}
+
+
+
+    <a href="{{ path('movies_afficher') }}">Retour à la liste des films</a>
+
+{% endblock %}

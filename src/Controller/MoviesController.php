@@ -3,51 +3,54 @@
 namespace App\Controller;
 
 use App\Entity\Movies;
+use DateTimeImmutable;
 use App\Form\MoviesType;
 use App\Repository\MoviesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/movies')]
 class MoviesController extends AbstractController
 {
     #[Route('/afficher', name: 'movies_afficher', methods: ['GET'])]
-    public function movies_afficher(MoviesRepository $moviesRepository): Response
+    public function movies_afficher(MoviesRepository $movieRepository): Response
     {
-        return $this->render('movies/afficher.html.twig', [
-            'movies' => $moviesRepository->findAll(),
+        $movies = $movieRepository->findAll();
+        return $this->render('movies/movies_afficher.html.twig', [
+            'movies' => $movies
         ]);
     }
 
     #[Route('/ajouter', name: 'movies_ajouter', methods: ['GET', 'POST'])]
     public function movies_ajouter(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $movie = new Movies();
-        $form = $this->createForm(MoviesType::class, $movie);
+        
+        $movies = new Movies();
+        $form = $this->createForm(MoviesType::class, $movies);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($movie);
+            $movies->setDateAt(new \DateTimeImmutable('now'));
+            $entityManager->persist($movies);
             $entityManager->flush();
 
             return $this->redirectToRoute('movies_afficher', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('movies/afficher.html.twig', [
-            'movies' => $movie,
-            'form' => $form,
+        return $this->render('movies/movies_ajouter.html.twig', [
+           'form' => $form->createView()
         ]);
     }
 
     
 
     #[Route('/{id}/modifier', name: 'movies_modifier', methods: ['GET', 'POST'])]
-    public function movies_modifier(Request $request, Movies $movie, EntityManagerInterface $entityManager): Response
+    public function movies_modifier(Request $request, Movies $movies, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(MoviesType::class, $movie);
+        $form = $this->createForm(MoviesType::class, $movies);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -56,17 +59,16 @@ class MoviesController extends AbstractController
             return $this->redirectToRoute('movies_afficher', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('movies/modifier.html.twig', [
-            'movies' => $movie,
-            'form' => $form,
+        return $this->render('movies/movies_modifier.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
     #[Route('/{id}', name: 'movies_supprimer', methods: ['POST'])]
-    public function movies_supprimer(Request $request, Movies $movie, EntityManagerInterface $entityManager): Response
+    public function movies_supprimer(Request $request, Movies $movies, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('supprimer'.$movie->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($movie);
+        if ($this->isCsrfTokenValid('supprimer',$movies->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($movies);
             $entityManager->flush();
         }
 
