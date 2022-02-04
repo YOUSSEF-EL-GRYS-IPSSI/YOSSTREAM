@@ -2,9 +2,11 @@
 
 
 const burger = document.querySelector('.burgerMobile');
+console.log(burger);
 const croix = document.querySelector('.croixMobile');
 
 const navbar = document.querySelector('.nav-mobile');
+console.log(navbar);
 
 
 
@@ -23,5 +25,4 @@ croix.addEventListener('click', () => {
     croix.style.display='none';
 
 })
-
 
