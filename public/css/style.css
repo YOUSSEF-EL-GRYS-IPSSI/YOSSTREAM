@@ -6,9 +6,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-
-  
- color: #fff;
+  color: #fff;
 
 }
 
@@ -80,6 +78,12 @@ img {
   font-size: 80px;
 }
 
+/* #burger {
+  display: none;
+} */
+
+
+
 @media only screen and (max-width : 768px) {
 
   .nav-item {
@@ -131,6 +135,23 @@ img {
 
 
 
+
+}
+
+@media only screen and (min-width : 426px) {
+
+  /* .nav-item{
+    display: block;
+  }
+  #burger img{
+    display: none;
+
+  }
+  #croix img{
+    display: none;
+
+  } */
+
 }
 
 @media only screen and (max-width : 428px) {
@@ -141,13 +162,21 @@ img {
 
   }
 
+
   #burger {
-    display: flex;
-    justify-content: end;
     position: relative;
     left: -15px;
     top: 0px;
+    text-align: end;
   }
+
+  #croix {
+    position: relative;
+    top: 3px;
+    right: 15px;
+    text-align: end;
+  }
+
 
 
   .list-items {
@@ -166,25 +195,54 @@ img {
     font-size: 150%;
     padding: 25px;
   }
-  .nav-item{
+
+  .nav-item {
     display: none;
   }
 
-  /* .nav-item {
+  #croix {
+    display: none;
+  }
+
+
+
+
+}
+
+@media only screen and (max-width : 320px) {
+  #croix {
+    display: flex;
+    justify-content: end;
     position: relative;
-    left: -300px;
-  } */
+    top: 9px;
+    right: 15px;
+  }
 
+  #croix {
+    display: none;
+  }
 
+  #burger {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    left: -15px;
+    top: 12px;
+  }
 
 }
 
 @media only screen and (min-width : 429px) {
 
-  #burger {
+  .burgerMobile img {
     display: none;
   }
-  
+
+  .croixMobile img {
+    display: none;
+  }
+
+
+
 
 }
-

@@ -1,30 +1,32 @@
-<header class="header-nav">
-	<div id="burger">
-		<img src="{{ asset('img/burger.svg') }}" alt="">
-	</div>
-	<nav class="nav-item">
+{% block header %}
 
-
-		<div>
-			<img src="{{ asset('img/logo.png') }}" alt="">
+	<header class="header-nav">
+		<div id="burger" class="burgerMobile">
+			<img src="{{ asset('img/burger.svg') }}" alt="">
 		</div>
-		<div>
-			<ul class="list-items">
-				<li>
-					<a href="">Accueil</a>
-				</li>
-				<li>
-					<a href="">Inscription</a>
-				</li>
-				<li>
-					<a href="" id="connect">S'identifier</a>
-				</li>
-			</ul>
+		<div id="croix" class="croixMobile">
+			<img src="{{ asset('img/croix.svg') }}" alt="">
 		</div>
-	</nav>
+		<nav class="nav-item nav-mobile">
 
 
+			<div>
+				<img src="{{ asset('img/logo.png') }}" alt="">
+			</div>
+			<div>
+				<ul class="list-items">
+					<li>
+						<a href="">Accueil</a>
+					</li>
+					<li>
+						<a href="">Inscription</a>
+					</li>
+					<li>
+						<a href="" id="connect">S'identifier</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
 
-
-
+	{% endblock %}

@@ -16,7 +16,11 @@
 	</head>
 	<body>
 		{% include "home/header.html.twig" %}
-		{% block body %}{% endblock %}
+
+	
+		
+		{% block body %}
+		{% endblock %}
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
@@ -24,5 +28,5 @@
 
 	</body>
 
-
+<script src="{{ asset('js/script.js') }}" ></script>
 </html>
