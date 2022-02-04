@@ -29,13 +29,31 @@ class MoviesController extends AbstractController
     {
         
         $movies = new Movies();
-        $form = $this->createForm(MoviesType::class, $movies);
+        
+        $form = $this->createForm(MoviesType::class, $movies, ['ajouter' => true ]);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('image')->getData();
+
+            if($imageFile)
+            {
+                $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $imageFile->getClientOriginalExtension();
+
+
+                $movies->setImage($nameImage);
+
+
+            }
+            
+            
             $movies->setDateAt(new \DateTimeImmutable('now'));
             $entityManager->persist($movies);
             $entityManager->flush();
+
+            
 
             return $this->redirectToRoute('movies_afficher', [], Response::HTTP_SEE_OTHER);
         }
@@ -64,14 +82,14 @@ class MoviesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'movies_supprimer', methods: ['POST'])]
-    public function movies_supprimer(Request $request, Movies $movies, EntityManagerInterface $entityManager): Response
+    #[Route('/supprimer/{id}', name: 'movies_supprimer', methods: ['GET','POST'])]
+    public function movies_supprimer( Movies $movies, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('supprimer',$movies->getId(), $request->request->get('_token'))) {
+         
             $entityManager->remove($movies);
             $entityManager->flush();
-        }
+        
 
-        return $this->redirectToRoute('movies_afficher', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('movies_afficher');
     }
 }

@@ -13,6 +13,10 @@
             <tr>
                 <th>Id</th>
                 <th>titre</th>
+                <th>description</th>
+                <th>image</th>
+                <th>modifier</th>
+                <th>supprimer</th>
                 
             </tr>
         </thead>
@@ -24,6 +28,7 @@
                 <td>{{ moviesArray.id }}</td>
                 <td>{{ moviesArray.titre }}</td>
                 <td>{{ moviesArray.description }}</td>
+                <td>{{ moviesArray.image }}</td>
                 
                 
 
@@ -31,9 +36,10 @@
                   <td>  <a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>  </td> 
                 
                 <br>
-                {# <td>
-                    <a href="{{ path('movies_supprimer', {'id': moviesArray.id}) }}">supprimer</a>
-                </td> #}
+                <td>
+                 <a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}"
+                    onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+                </td>
             </tr>
         {% else %}
             <tr>
