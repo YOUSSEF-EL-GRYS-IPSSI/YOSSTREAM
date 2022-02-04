@@ -2,22 +2,23 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+
 		<title>
-			{% block title %}
-				YOSSTREAM | Bienvenue
-			{% endblock %}
+			{% block title %} YOSSTREAM | Bienvenue {% endblock %}
 		</title>
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="{{ asset('css/style.css')}}">
-
-	</head>
-	<body>
+		
+		<div>
 		{% include "home/header.html.twig" %}
-
+		</div>
+	</head>
 	
+	<body>
 		
 		{% block body %}
 		{% endblock %}
@@ -27,6 +28,7 @@
 		{% endblock %}
 
 	</body>
+	
 
 <script src="{{ asset('js/script.js') }}" ></script>
 </html>

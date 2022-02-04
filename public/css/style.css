@@ -8,6 +8,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: #fff;
 
+ 
+
 }
 
 .header-nav {
@@ -65,6 +67,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .title-slide h1 {
