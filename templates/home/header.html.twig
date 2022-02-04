@@ -8,19 +8,72 @@
 		<div>
 			<img src="{{ asset('img/logo.png') }}" alt="">
 		</div>
-		<div>
-			<ul class="list-items">
-				<li>
-					<a href="{{ path("home") }}">Accueil</a>
-				</li>
-				<li>
-					<a href="{{ path("app_register") }}">Inscription</a>
-				</li>
-				<li>
-					<a href="" id="connect">S'identifier</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+		{% if app.user %}
+
+			{% if is_granted('ROLE_ADMIN') %}
+
+				<li class="nav-item dropdown">
+
+					<a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">ADMIN</a>
+
+					<ul class="list-items">
+						<li><hr class=""></li>
+						<li>
+							<a class="dropdown-item" href="{{ path('movies_afficher') }}">Gestions des films</a>
+						</li>
+
+						<li><hr class=""></li>
+						<li>
+							<a class="" href="{{ path('series_afficher') }}">Gestions des séries</a>
+
+						</li>
+
+						<li>
+							<a class="" href="{{ path('genre_afficher')}}">Gestion des genres</a>
+						</li>
+
+						<li>
+							<a class="" href="{{ path('user')}}">Gestion des utilisateurs</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+						</li>
+
+					</li>
+
+				{% elseif is_granted('ROLE_USER') %}
+
+					<div>
+						<ul class="list-items">
+							<li>
+								<a href="{{ path("home") }}">Profil</a>
+							</li>
+							<li>
+								<a href="{{ path("app_logout") }}">Déconnexion</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+
+			{% endif %}
+
+		{% else %}
+			<div>
+				<ul class="list-items">
+					<li>
+						<a href="{{ path("home") }}">Accueil</a>
+					</li>
+					<li>
+						<a href="{{ path("app_register") }}">Inscription</a>
+					</li>
+					<li>
+						<a href="{{ path("app_login") }}" id="connect">S'identifier</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
 
+	{% endif %}
+</ul></li></div></div></ul></div></div></nav>
