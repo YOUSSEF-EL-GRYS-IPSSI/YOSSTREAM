@@ -1,54 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Les Films YOSSTREAM {% endblock %}
+{% block title %}
+	Les Films YOSSTREAM
+{% endblock %}
 
 {% block body %}
-    <h1> Films </h1>
-    
-    <a href="{{ path('movies_ajouter') }}">ajouter </a>
+<h1>
+	Films
+</h1>
 
-    {% if movies  %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>titre</th>
-                <th>description</th>
-                <th>image</th>
-                <th>modifier</th>
-                <th>supprimer</th>
-                
-            </tr>
-        </thead>
+<a href="{{ path('movies_ajouter') }}">ajouter
+</a>
 
-        <tbody>
-        {% for moviesArray in movies %}
+{% if movies  %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>titre</th>
+				<th>description</th>
+				<th>image</th>
+                <th> Genre </th>
+				<th>modifier</th>
+				<th>supprimer</th>
 
-            <tr>
-                <td>{{ moviesArray.id }}</td>
-                <td>{{ moviesArray.titre }}</td>
-                <td>{{ moviesArray.description }}</td>
-                <td>{{ moviesArray.image }}</td>
-                
-                
+			</tr>
+		</thead>
 
-                
-                  <td>  <a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>  </td> 
-                
-                <br>
-                <td>
-                 <a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}"
-                    onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+		<tbody>
+			{% for moviesArray in movies %}
+
+				<tr>
+					<td>{{ moviesArray.id }}</td>
+					<td>{{ moviesArray.titre }}</td>
+					<td>{{ moviesArray.description }}</td>
+					<td>{{ moviesArray.image }}</td>
+				    <td>
+                {% if moviesArray.genre[0] is defined %}{% endif %}
+
+                    {% for genre in moviesArray.genre %}
+
+                        {% if moviesArray.genre|last == genre %}
+
+                            {{ genre.type }}
+
+                        {% else %}
+
+                            {{ genre.type }} 
+                            
+                        {% endif %}
+                    
+                    {% endfor %}
+                    
                 </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">Aucun fichier trouver</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    
-    {% endif %}
-    
-{% endblock %}
+                    
+                   
+				</tr>
+			</td>
+
+
+			<td>
+				<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
+			</td>
+
+			<br>
+			<td>
+				<a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+			</td>
+		</tbody>
+	</tr>
+{% else %}
+	<tr>
+		<td colspan="2">Aucun fichier trouver</td>
+	</tr>
+{% endfor %}</tbody></table>{% endif %}{% endblock %}

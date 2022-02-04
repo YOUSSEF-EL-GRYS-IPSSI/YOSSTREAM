@@ -76,7 +76,7 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/supprimer/{id}', name: 'genre_supprimer', methods: ['POST'])]
+    #[Route('/supprimer/{id}', name: 'genre_supprimer', methods: ['GET','POST'])]
     public function genre_supprimer(Genre $genre, EntityManagerInterface $entityManager): Response
     {
             $genreType = $genre->getType();

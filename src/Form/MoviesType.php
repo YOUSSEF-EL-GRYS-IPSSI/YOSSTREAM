@@ -44,7 +44,7 @@ class MoviesType extends AbstractType
         ->add('description', TextareaType::class, [
             "label" => "Description ", 
             "required" => false,
-             "attr" => ["row" => 4]]);
+             "attr" => ["row" => 4]])
         
 
         
@@ -59,14 +59,14 @@ class MoviesType extends AbstractType
         //         "expanded" => true
 
         //     ]);
-        // ->add('genre', EntityType::class, [ // Relation
-        //     "class" => Genre::class,        // Avec quelle class
-        //     "choice_label" => "type",           // Quelle propriété afficher
-        //     "placeholder" => "Sélectionnez un genre",
-        //     "multiple" => true,
-        //     "expanded" => true
-        //     //"expanded" => true soit radio pour une valeur soit checkbox pour plusieurs valeurs 
-        // ]);
+        ->add('genre', EntityType::class, [ // Relation
+            "class" => Genre::class,        // Avec quelle class
+            "choice_label" => "type",           // Quelle propriété afficher
+            "placeholder" => "Sélectionnez un genre",
+            "multiple" => true,
+            "expanded" => true
+            //"expanded" => true soit radio pour une valeur soit checkbox pour plusieurs valeurs 
+        ]);
         
         
         if($options['ajouter'])
