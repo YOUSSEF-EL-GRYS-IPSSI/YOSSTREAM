@@ -19,14 +19,10 @@
 	</head>
 	
 	<body>
-	
-	
 		
 		{% block body %}
 		{% endblock %}
-		
-		
-		<script src= "{{ asset('js/script.js')}}"></script> 
+
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
@@ -34,5 +30,5 @@
 	</body>
 	
 
-
+<script src="{{ asset('js/script.js') }}" ></script>
 </html>

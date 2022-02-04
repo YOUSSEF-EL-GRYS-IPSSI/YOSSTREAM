@@ -1,12 +1,8 @@
-<header class="header-nav">
-	<div id="burger">
-		<img src="{{ asset('img/burger.svg') }}" alt="">
-	</div>
-	<nav class="nav-item">
+{% block header %}
 
-
-		<div>
-			<img src="{{ asset('img/logo.png') }}" alt="">
+	<header class="header-nav">
+		<div id="burger" class="burgerMobile">
+			<img src="{{ asset('img/burger.svg') }}" alt="">
 		</div>
 		{% if app.user %}
 
@@ -73,7 +69,5 @@
 				</ul>
 			</div>
 		</nav>
-
-
 	{% endif %}
-</ul></li></div></div></ul></div></div></nav>
+
