@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
+
+#[UniqueEntity(fields:("email"),message : "Cet email existe déjà")]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields:("email"), message : "Cet email existe déjà")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
