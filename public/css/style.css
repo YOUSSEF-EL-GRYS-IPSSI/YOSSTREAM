@@ -7,9 +7,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: #fff;
-
-
-
 }
 
 .header-nav {
@@ -22,6 +19,7 @@ body {
   align-items: center;
   margin: 0 auto;
   max-width: 1450px;
+  justify-content: center;
 
 }
 
@@ -34,7 +32,7 @@ body {
   margin-left: 10px;
 }
 
-li a {
+.list-items li a {
   text-decoration: none;
   color: #fff;
   font-size: 27px;
@@ -81,6 +79,29 @@ li a {
   font-size: 80px;
 }
 
+/* ///////////////////ROLE ADMIN//////////////////////////// */
+
+.list-items-roleAdmin {
+  display: flex;
+}
+
+.list-items-roleAdmin li {
+
+  list-style: none;
+  list-style: none;
+  width: 175px;
+
+}
+
+.list-items-roleAdmin a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo-home {
+  width: 100vh;
+
+}
 
 /* ////////////REGISTER//////////////////////// */
 .form-column {
@@ -208,7 +229,8 @@ li a {
   padding-bottom: 24px;
 
 }
-.login-svg img{
+
+.login-svg img {
   width: 70%;
 }
 
