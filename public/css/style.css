@@ -170,12 +170,19 @@ li a {
   display: flex;
   flex-direction: column;
   max-width: 40%;
-  padding: 24px 15px;
+  padding: 30px 19px;
+  border-radius: 17px;
 }
 
 .connect-user {
   padding: 5px 38px;
   display: grid;
+}
+
+.connect-user input {
+  padding: 6px 9px;
+  border-radius: 4px;
+  border: none;
 }
 
 
