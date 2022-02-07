@@ -23,7 +23,12 @@ class MoviesType extends AbstractType
         "label" => "Titre du films",
         "required" => false,
         "attr" => [
-            "placeholder" => " ajouter le titre du film"
+            "placeholder" => " ajouter le titre du film",
+            
+        ],
+        'label_attr'=>[
+            'class'=>'labelInput'
+
         ],
         "constraints" => [
             new NotBlank([
