@@ -18,6 +18,8 @@ class GenreController extends AbstractController
     #[Route('/afficher', name: 'genre_afficher', methods: ['GET'])]
     public function genre_afficher(GenreRepository $genreRepository): Response
     {
+        // On génère une exception
+        throw $this->createNotFoundException('Page perdue');
 
         $genre = $genreRepository->findAll();
 
