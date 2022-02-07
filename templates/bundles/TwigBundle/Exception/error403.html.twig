@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} Accès interdit {% endblock %}
+
 {% block body %}
 
-    <h1>403 NOT ACCESS</h1>
-
-    <p>
-        The requested page couldn't be located.
-        Checkout for any URL misspelling or <a href="{{ path('home') }}">return to the homepage</a>.
-    </p>
+    <h1>Accès interdit</h1>
+    <p>La page que vous cherchez n'est pas accessible.</p>
+    <p>Code de l'erreur : {{ status_code }}</p>
+    <p>Message de l'erreur : {{ status_text }}</p>
+    <p>Message personnalisé : {{ exception.message }}</p>
+ <p>
+    Vous n'avez pas la permission de voir cette page.<a href="{{ path('home') }}">Retour à l'accueil</a>.
+</p>
     
 {% endblock %}
