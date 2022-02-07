@@ -1,26 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Page d'inscription {% endblock %}
+{% block title %}
+	Page d'inscription
+{% endblock %}
 
 {% block body %}
+	<section class="formGlobal">
 
-    <h1>Formulaire d'inscription</h1>
 
-    {{ form_start(registrationForm) }}
+		{{ form_start(registrationForm) }}
 
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Mots de passe'
-        }) }}
+		<div class="form-register">
 
-        {{ form_row(registrationForm.name) }}
+			<div class="register-svg">
+				<img src="{{ asset('img/register.svg') }}" alt="">
+			</div>
+			<div class="form-right">
+				<h2 class="title-register">Veuillez vous connecter</h2>
+				<div
+					class="form-column">
+					{# {{ form_row(registrationForm.name) }} #}
+					{{ form_label(registrationForm.name) }}
+					{{ form_errors(registrationForm.name) }}
+					{{ form_widget(registrationForm.name) }}
+				</div>
+				<div class="form-column">
 
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.agreeTerms, {
+					{{ form_label(registrationForm.username) }}
+					{{ form_errors(registrationForm.username) }}
+					{{ form_widget(registrationForm.username) }}
+				</div>
+
+				<div class="form-column">
+					{{ form_label(registrationForm.email) }}
+					{{ form_errors(registrationForm.email) }}
+					{{ form_widget(registrationForm.email) }}
+				</div>
+				<div class="form-column">
+					{{ form_label(registrationForm.plainPassword) }}
+					{{ form_errors(registrationForm.plainPassword) }}
+					{{ form_widget(registrationForm.plainPassword) }}
+				</div>
+
+				<div class="form-column">
+					{{ form_row(registrationForm.agreeTerms, {
             label: 'Accepter les conditions'
         }) }}
-
-        <button type="submit" class="btn btn-mt-3">S'inscrire</button>
-
-    {{ form_end(registrationForm) }}
+				</div>
+				<div class="form-column btn-center">
+					<button type="submit" class="btn btn-mt-3">S'inscrire</button>
+				</div>
+			</div>
+		</div>
+	</section>
+	{{ form_end(registrationForm) }}
 {% endblock %}
