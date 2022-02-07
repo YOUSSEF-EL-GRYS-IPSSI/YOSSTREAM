@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields:("email"), message : "Cet email existe déjà")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -15,7 +17,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+
+ 
+ 
+ 
+    #[ORM\Column(name: 'email', type: 'string', length: 180, unique: true)]
+    // #[Assert\Email(strict: true, message: "Le format de l'email est incorrect")]
+    // #[Assert\Email(checkMX: true, message: "Aucun serveur mail n'a été trouvé pour ce domaine")]
     private $email;
 
     #[ORM\Column(type: 'json')]
