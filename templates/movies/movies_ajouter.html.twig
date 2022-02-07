@@ -6,7 +6,11 @@
     
 
     
-    {{ form_start(form) }}
+    {{ form_start(form,{
+        "attr": {
+            "class": 'formMovie'
+        }
+    }) }}
 
     {{ form_row(form.titre) }}
 
