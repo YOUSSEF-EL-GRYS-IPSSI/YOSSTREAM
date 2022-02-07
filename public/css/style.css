@@ -165,17 +165,50 @@ li a {
 }
 
 .form-connect {
-  background-color: #FF4901;
+  background-color: #000000;
   color: #fff;
   display: flex;
   flex-direction: column;
   max-width: 40%;
-  padding: 24px 15px;
+  padding: 30px 19px;
+  border-radius: 17px;
 }
 
 .connect-user {
   padding: 5px 38px;
   display: grid;
+}
+
+.connect-user input {
+  padding: 6px 9px;
+  border-radius: 4px;
+  border: none;
+}
+
+.btn-login {
+  color: #fff;
+  background: rgb(155, 3, 3);
+  border: none;
+  padding: 9px 15px;
+  font-size: 18px;
+  border-radius: 7px;
+  cursor: pointer;
+
+}
+
+.title-connect {
+  font-size: 20px;
+  text-align: center;
+}
+
+.login-svg {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 24px;
+
+}
+.login-svg img{
+  width: 70%;
 }
 
 
