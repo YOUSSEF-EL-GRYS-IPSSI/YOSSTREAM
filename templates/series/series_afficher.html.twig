@@ -60,7 +60,11 @@
 
                 {% if series.image %}
                     
-                    <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
+                    <img src="{{ asset("img/upload/"~ series.image ) }}" alt="" style="width:100px">
+
+                {% else %}
+                    
+                   <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
                     
                 {% endif %}
 
@@ -83,7 +87,7 @@
         {% else %}
 
             <tr>
-                <td colspan="2">Aucun fichier trouvé</td>
+                <td colspan="2">Il n'y a aucune série pour le moment</td>
             </tr>
 
         {% endfor %}
