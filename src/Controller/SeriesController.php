@@ -49,15 +49,24 @@ class SeriesController extends AbstractController
 
                 $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $imageFile->getClientOriginalExtension();
 
-                // Déplacer le fichier (image) dans le projet;
+                // Déplacer le fichier (image) dans le projet
+
+                $imageFile->move(
+                    $this->getParameter("imageUpload"),
+                    $nameImage
+                );
+
+              
 
                 // Enregistrer le nom de l'image en bdd
-
                 $series->setImage($nameImage);
-
-
+    
 
             }
+
+            
+            //dd($series);
+
             //dump($produit); 2ème étape de mes données
             $series->setDateAt(new \DateTimeImmutable("now"));
 
@@ -99,6 +108,12 @@ class SeriesController extends AbstractController
                 $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $imageFile->getClientOriginalExtension();
 
                 // Déplacer le fichier (image) dans le projet;
+
+
+                $imageFile->move(
+                    $this->getParameter("imageUpload"),
+                    $nameImage
+                );
 
                 // Enregistrer le nom de l'image en bdd
 
