@@ -20,7 +20,8 @@
 				<th>titre</th>
 				<th>description</th>
 				<th>image</th>
-                <th>Genre </th>
+        <th>Genre</th>
+
 				<th>modifier</th>
 				<th>supprimer</th>
 
@@ -28,44 +29,60 @@
 		</thead>
 
 		<tbody>
+
 			{% for moviesArray in movies %}
 
 				<tr>
 					<td>{{ moviesArray.id }}</td>
 					<td>{{ moviesArray.titre }}</td>
 					<td>{{ moviesArray.description }}</td>
-					<td>{{ moviesArray.image }}</td>
-				    <td>
-                {% if moviesArray.genre[0] is defined %}{% endif %}
+					 <td>
+						{% if moviesArray.image %}
 
-                    {% for genre in moviesArray.genre %}
-
-                        {% if moviesArray.genre|last == genre %}
-
-                            {{ genre.type }}
-
-                        {% else %}
-
-                            {{ genre.type }} 
-                            
-                        {% endif %}
-                    
-                    {% endfor %}
-                    
-                </td>
+							<img src="{{ asset("img/upload/" ~ moviesArray.image) }}" alt="" style="width:80px">
+						{% else %}
+							<img src="{{ asset('img/imageDefaul.jpg')}} " alt="" style="width:80px">
 
 
-			<td>
-				<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
-			</td>
+						{% endif %}
+					</td>
+					<td>
+						{% if moviesArray.genre[0] is defined %}{% endif %}
 
-			<td>
-				<a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
-			</td>
-		</tbody>
-	</tr>
-{% else %}
-	<tr>
-		<td colspan="2">Aucun fichier trouver</td>
-	</tr>
-{% endfor %}</tbody></table>{% endif %}{% endblock %}
+						{% for genre in moviesArray.genre %}
+
+							{% if moviesArray.genre|last == genre %}
+
+								{{ genre.type }}
+
+							{% else %}
+
+								{{ genre.type }}
+
+							{% endif %}
+
+						{% endfor %}
+
+					</td>
+
+
+					<td>
+						<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
+					</td>
+
+
+					<td>
+						<a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+					</td>
+				</tr>
+
+			</tbody>
+
+		{% else %}
+			<tr>
+				<td colspan="2">Aucun fichier trouver</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>{% endif %}{% endblock %}
+                
