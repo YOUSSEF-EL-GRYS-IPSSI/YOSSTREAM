@@ -21,25 +21,33 @@
 					class="form-column">
 					{# {{ form_row(registrationForm.name) }} #}
 					{{ form_label(registrationForm.name) }}
-						<div style="color:red;"> {{ form_errors(registrationForm.name) }}  </div>
+					<div style="color:red;">
+						{{ form_errors(registrationForm.name) }}
+					</div>
 					{{ form_widget(registrationForm.name) }}
 				</div>
 				<div class="form-column">
 
 					{{ form_label(registrationForm.username) }}
-					<div style="color:red;"> {{ form_errors(registrationForm.username) }}  </div>
-					
+					<div style="color:red;">
+						{{ form_errors(registrationForm.username) }}
+					</div>
+
 					{{ form_widget(registrationForm.username) }}
 				</div>
 
 				<div class="form-column">
 					{{ form_label(registrationForm.email) }}
-				<div style="color:red;"> {{ form_errors(registrationForm.email) }}  </div>
+					<div style="color:red;">
+						{{ form_errors(registrationForm.email) }}
+					</div>
 					{{ form_widget(registrationForm.email) }}
 				</div>
 				<div class="form-column">
 					{{ form_label(registrationForm.plainPassword) }}
-					<div style="color:red;"> {{ form_errors(registrationForm.username) }}  </div>
+					<div style="color:red;">
+						{{ form_errors(registrationForm.username) }}
+					</div>
 					{{ form_widget(registrationForm.plainPassword) }}
 				</div>
 
