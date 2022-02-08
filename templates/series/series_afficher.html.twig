@@ -59,10 +59,13 @@
                 <td>
 
                 {% if series.image %}
-                    
-                    <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
-                    
-                {% endif %}
+								
+								<img src="{{ asset("img/upload/" ~ series.image) }}" alt="" style="width:80px">
+								{% else %}
+								<img src="{{ asset('img/imageDefault.jpg')}} " alt="" style="width:80px" >
+
+							
+							{% endif %}
 
                 </td>
 

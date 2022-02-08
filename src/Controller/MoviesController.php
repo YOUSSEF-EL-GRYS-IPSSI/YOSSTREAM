@@ -34,14 +34,19 @@ class MoviesController extends AbstractController
         
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+         {
 
             $imageFile = $form->get('image')->getData();
-
+   
             if($imageFile)
             {
                 $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $imageFile->getClientOriginalExtension();
-
+    
+                $imageFile->move(
+                    $this->getParameter("imageUpload"),
+                    $nameImage
+                );
 
                 $movies->setImage($nameImage);
 
@@ -61,6 +66,7 @@ class MoviesController extends AbstractController
         return $this->render('movies/movies_ajouter.html.twig', [
            'form' => $form->createView()
         ]);
+    
     }
 
     
@@ -68,13 +74,40 @@ class MoviesController extends AbstractController
     #[Route('/{id}/modifier', name: 'movies_modifier', methods: ['GET', 'POST'])]
     public function movies_modifier(Request $request, Movies $movies, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(MoviesType::class, $movies);
+        
+        $form = $this->createForm(MoviesType::class, $movies, [ 'modifier' => true ]);
         $form->handleRequest($request);
 
+      
         if ($form->isSubmitted() && $form->isValid()) {
+          
+            $imageFile = $form->get('imageFile')->getData();
+   
+          
+            if($imageFile)
+            {
+                $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $imageFile->getClientOriginalExtension();
+    
+                $imageFile->move(
+                    $this->getParameter("imageUpload"),
+                    $nameImage
+                );
+
+                $movies->setImage($nameImage);
+
+
+            }
+            
+            
+            $movies->setDateAt(new \DateTimeImmutable('now'));
+            $entityManager->persist($movies);
             $entityManager->flush();
 
+            
+
             return $this->redirectToRoute('movies_afficher', [], Response::HTTP_SEE_OTHER);
+
+
         }
 
         return $this->render('movies/movies_modifier.html.twig', [
@@ -91,5 +124,9 @@ class MoviesController extends AbstractController
         
 
         return $this->redirectToRoute('movies_afficher');
+
+
+
+        
     }
 }
