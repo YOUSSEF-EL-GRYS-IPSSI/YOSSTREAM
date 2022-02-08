@@ -103,11 +103,11 @@ body {
 
 }
 
-.btn-deconnect{
-    background: red;
-    padding: 15px 12px;
-    text-align: center;
-    border-radius: 10px;
+.btn-deconnect {
+  background: red;
+  padding: 15px 12px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 /* ////////////REGISTER//////////////////////// */
@@ -241,6 +241,25 @@ body {
   width: 70%;
 }
 
+
+/* //////////////error404//////////////////////// */
+
+.error404 {
+  display: flex;
+  justify-content: center;
+}
+
+/* ////////////////////Ajout film///////////////////////////// */
+.formMovie {
+  background: #821818;
+  width: 21%;
+  margin: auto;
+  padding: 15px 22px;
+}
+.movie-flex{
+  display: flex;
+  flex-direction: column;
+}
 
 /* /////////////////////////////////////////////////////////////////// */
 
