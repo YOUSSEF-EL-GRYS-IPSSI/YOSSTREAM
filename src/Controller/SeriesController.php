@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/series')]
+#[Route('admin/series')]
 class SeriesController extends AbstractController
 {
     #[Route('/afficher', name: 'series_afficher', methods: ['GET'])]

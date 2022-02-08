@@ -20,7 +20,7 @@
 				<th>titre</th>
 				<th>description</th>
 				<th>image</th>
-                <th> Genre </th>
+                <th>Genre </th>
 				<th>modifier</th>
 				<th>supprimer</th>
 
@@ -53,17 +53,12 @@
                     {% endfor %}
                     
                 </td>
-                    
-                   
-				</tr>
-			</td>
 
 
 			<td>
 				<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
 			</td>
 
-			<br>
 			<td>
 				<a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
 			</td>
