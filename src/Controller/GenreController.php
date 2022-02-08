@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/genre')]
+#[Route('admin/genre')]
 
 class GenreController extends AbstractController
 {
@@ -19,7 +19,7 @@ class GenreController extends AbstractController
     public function genre_afficher(GenreRepository $genreRepository): Response
     {
         // On génère une exception
-        throw $this->createNotFoundException('Page perdue');
+        //throw $this->createNotFoundException('Page perdue');
 
         $genre = $genreRepository->findAll();
 

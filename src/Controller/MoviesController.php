@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/movies')]
+#[Route('admin/movies')]
 class MoviesController extends AbstractController
 {
     #[Route('/afficher', name: 'movies_afficher', methods: ['GET'])]
