@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Page non trouvée {% endblock %}
+{% block title %}
+	Page non trouvée
+{% endblock %}
 
 {% block body %}
 
-    <h1>Page non trouvée</h1>
-    <p>La page que vous cherchez n'a pas été trouvée.</p>
-    <p>Code de l'erreur : {{ status_code }}</p>
-    <p>Message de l'erreur : {{ status_text }}</p>
-    <p>Message personnalisé : {{ exception.message }}</p>
-    <p>
-        La page que vous cherchez n'a pas été trouvée <a href="{{ path('home') }}">Retournez à l'accueil</a>.
-    </p>
-    
+	<div class="error404">
+		<img src="{{ asset('img/404.jpg') }}" alt="">
+	</div>
+	<p>
+		La page que vous cherchez n'a pas été trouvée
+		<a href="{{ path('home') }}">Retournez à l'accueil</a>.
+	</p>
+
 {% endblock %}
