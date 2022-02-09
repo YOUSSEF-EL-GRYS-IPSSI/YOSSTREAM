@@ -1,99 +1,99 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Toutes les séries{% endblock %}
+{% block title %}Toutes les séries
+{% endblock %}
 
 {% block body %}
 
-    <a class="" href="{{ path("series_ajouter") }}">Ajouter</a>
+	<a class="" href="{{ path("series_ajouter") }}">Ajouter</a>
 
-    {% for notification in app.flashes("success") %}
+	{% for notification in app.flashes("success") %}
 
-    <div class="">
+		<div class="">
 
-        {{notification}}
-    
-    </div>
-    
-{% endfor %}
+			{{notification}}
 
-    <table class="">
+		</div>
 
-        <thead class="">
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Genre</th>
-                <th>Image</th> 
-                <th>Date de Création</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
-            </tr>
-        </thead>
+	{% endfor %}
 
-        <tbody>
-        {% for series in series %}
-            <tr>
+	<table class="table">
 
-                <td>{{ series.id }}</td>
-                <td>{{ series.title }}</td>
-                <td>{{ series.description }}</td>
-                <td>
-                {% if series.genre[0] is defined %}{% endif %}
+		<thead class="">
+			<tr class="title-table">
+				<th>Id</th>
+				<th>Titre</th>
+				<th>Description</th>
+				<th>Genre</th>
+				<th>Image</th>
+				<th>Date de Création</th>
+				<th>Modifier</th>
+				<th>Supprimer</th>
+			</tr>
+		</thead>
 
-                    {% for genre in series.genre %}
+		<tbody class="tbody-movies">
+			{% for series in series %}
+				<tr>
 
-                        {% if series.genre|last == genre %}
+					<td>{{ series.id }}</td>
+					<td>{{ series.title }}</td>
+					<td>{{ series.description }}</td>
+					<td>
+						{% if series.genre[0] is defined %}{% endif %}
 
-                            {{ genre.type }}
+						{% for genre in series.genre %}
 
-                        {% else %}
+							{% if series.genre|last == genre %}
 
-                            {{ genre.type }} 
-                            
-                        {% endif %}
-                    
-                    {% endfor %}
-                    
-                </td>
-                <td>
+								{{ genre.type }}
 
-                {% if series.image %}
+							{% else %}
 
-                   <img src="{{ asset("img/upload/"~ series.image ) }}" alt="" style="width:100px">
+								{{ genre.type }}
 
-                {% else %}
-                    
-                   <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
-                    
-                {% endif %}
+							{% endif %}
+
+						{% endfor %}
+
+					</td>
+					<td>
+
+						{% if series.image %}
+
+							<img src="{{ asset("img/upload/"~ series.image ) }}" alt="" style="width:100px">
+
+						{% else %}
+
+							<img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
+
+						{% endif %}
 
 
-                </td>
+					</td>
 
-                <td>{{ series.dateAt|date('d/m/Y H:i:s') }}</td>
-                
-                <td>
-                    <a href="{{ path('series_modifier', {'id': series.id}) }}">Modifier</a>
-                </td>
+					<td>{{ series.dateAt|date('d/m/Y H:i:s') }}</td>
 
-                 <td>
-                    <a href="{{ path('series_supprimer', {'id' : series.id } ) }}"
-                    onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+					<td class="btn-update">
+						<a href="{{ path('series_modifier', {'id': series.id}) }}">Modifier</a>
+					</td>
 
-                </td>
+					<td class="btn-delete">
+						<a href="{{ path('series_supprimer', {'id' : series.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
 
-            </tr>
+					</td>
 
-        {% else %}
+				</tr>
 
-            <tr>
-                <td colspan="2">Il n'y a aucune série pour le moment</td>
-            </tr>
+			{% else %}
 
-        {% endfor %}
+				<tr>
+					<td colspan="2">Il n'y a aucune série pour le moment</td>
+				</tr>
 
-        </tbody>
+			{% endfor %}
 
-    </table>
+		</tbody>
+
+	</table>
 {% endblock %}

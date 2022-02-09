@@ -82,7 +82,7 @@ body {
 .title-table {
   background: rgb(2, 0, 36);
   background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 0, 0, 1) 0%, rgba(36, 19, 20, 1) 85%);
-  
+
 }
 
 .title-table th {
@@ -92,20 +92,32 @@ body {
 
 tbody:nth-child(odd) {
   background-color: #000000;
- 
+
 
 }
 
-td:nth-child(odd){
+td:nth-child(odd) {
   padding: 0 35px 0 35px;
 }
-td:nth-child(even){
+
+td:nth-child(even) {
   padding: 0 35px 0 35px;
 }
 
 tbody:nth-child(even) {
   background-color: #7a6f7a;
- 
+
+}
+
+.espace:nth-child(even) {
+  background-color: #7a6f7a;
+
+}
+
+.espace:nth-child(odd) {
+  background-color: #000000;
+
+
 }
 
 tbody {
@@ -115,7 +127,7 @@ tbody {
   font-weight: 600;
   text-align: center;
 
-  
+
 }
 
 table {
@@ -123,6 +135,10 @@ table {
   border-collapse: collapse;
   box-shadow: 4px 7px 21px 3px #000000;
 
+}
+
+.espace tr {
+  height: 76px;
 }
 
 .btn-update a {
@@ -142,6 +158,15 @@ table {
   padding: 8px;
   border-radius: 9px;
 
+}
+
+.btn-ajout-movies {
+  color: #fff;
+  text-decoration: none;
+  background: #0c2394;
+  padding: 10px;
+  font-size: 26px;
+  border-radius: 8px;
 }
 
 
@@ -169,7 +194,7 @@ table {
 .list-items-roleAdmin a:hover {
 
   border-bottom: 2px solid rgb(172, 9, 9);
-  
+
 }
 
 .logo-home {
