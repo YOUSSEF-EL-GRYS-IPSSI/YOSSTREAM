@@ -30,6 +30,9 @@ class Series
     #[ORM\ManyToMany(targetEntity: Genre::class, inversedBy: 'series')]
     private $genre;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $video;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
@@ -108,6 +111,18 @@ class Series
     public function removeGenre(Genre $genre): self
     {
         $this->genre->removeElement($genre);
+
+        return $this;
+    }
+
+    public function getVideo(): ?string
+    {
+        return $this->video;
+    }
+
+    public function setVideo(?string $video): self
+    {
+        $this->video = $video;
 
         return $this;
     }

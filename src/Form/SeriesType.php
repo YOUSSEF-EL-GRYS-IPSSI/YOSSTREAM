@@ -73,6 +73,24 @@ class SeriesType extends AbstractType
 
                 ]);
             }
+
+        if($options['ajouter'])
+            {
+                $builder->add('video', FileType::class, [
+                    "required" => false,
+                    //"multiple" => true,
+                        
+                ]);
+            }
+
+            elseif($options['modifier'])
+            {
+                $builder->add('videoFile', FileType::class, [
+                    "required" => false,
+                    "mapped" => false,
+
+                ]);
+            }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
