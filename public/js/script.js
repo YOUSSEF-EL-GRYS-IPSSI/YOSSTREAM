@@ -1,6 +1,5 @@
 
 
-
 const burger = document.querySelector('.burgerMobile');
 console.log(burger);
 const croix = document.querySelector('.croixMobile');
@@ -25,4 +24,6 @@ croix.addEventListener('click', () => {
     croix.style.display='none';
 
 })
+
+
 

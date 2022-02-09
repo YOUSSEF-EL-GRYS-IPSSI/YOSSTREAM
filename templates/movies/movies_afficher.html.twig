@@ -15,12 +15,13 @@
 {% if movies  %}
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="title-table">
 				<th>Id</th>
 				<th>titre</th>
 				<th>description</th>
 				<th>image</th>
-        <th>Genre</th>
+				<th>Genre</th>
+
 
 				<th>modifier</th>
 				<th>supprimer</th>
@@ -28,7 +29,8 @@
 			</tr>
 		</thead>
 
-		<tbody>
+
+		<tbody class="tbody-movies">
 
 			{% for moviesArray in movies %}
 
@@ -36,7 +38,8 @@
 					<td>{{ moviesArray.id }}</td>
 					<td>{{ moviesArray.titre }}</td>
 					<td>{{ moviesArray.description }}</td>
-					 <td>
+
+					<td>
 						{% if moviesArray.image %}
 
 							<img src="{{ asset("img/upload/" ~ moviesArray.image) }}" alt="" style="width:80px">
@@ -66,12 +69,13 @@
 					</td>
 
 
-					<td>
+					<td class="btn-update">
 						<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
 					</td>
 
 
-					<td>
+					<td class="btn-delete">
+
 						<a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
 					</td>
 				</tr>
@@ -84,5 +88,5 @@
 			</tr>
 		{% endfor %}
 	</tbody>
+
 </table>{% endif %}{% endblock %}
-                

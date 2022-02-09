@@ -21,6 +21,7 @@ class GenreController extends AbstractController
         // On génère une exception
         //throw $this->createNotFoundException('Page perdue');
 
+
         $genre = $genreRepository->findAll();
 
         return $this->render('genre/genre_afficher.html.twig', [
