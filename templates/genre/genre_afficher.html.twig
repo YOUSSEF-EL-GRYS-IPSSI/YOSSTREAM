@@ -16,11 +16,11 @@
 
 {% endfor %}
 
-    <table class="">
+    <table class="table">
 
-        <thead class="">
+        <thead>
 
-            <tr>
+            <tr class="title-table">
 
                 <th>Id</th>
                 <th>Titre</th>
@@ -31,7 +31,7 @@
 
         </thead>
 
-        <tbody>
+        <tbody class="tbody-movies espace">
         {% for genre in genre %}
             <tr>
 
@@ -39,11 +39,11 @@
 
                 <td>{{ genre.type }}</td>
 
-                <td>
+                <td class="btn-update">
                     <a href="{{ path('genre_modifier', {'id': genre.id}) }}">Modifier</a>
                 </td>
 
-                 <td>
+                 <td class="btn-delete">
                     <a href="{{ path('genre_supprimer', {'id' : genre.id } ) }}"
                     onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
 
