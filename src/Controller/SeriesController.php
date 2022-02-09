@@ -37,6 +37,7 @@ class SeriesController extends AbstractController
         {
 
             $imageFile = $form->get('image')->getData();
+            $videoFile = $form->get('video')->getData();
 
             // S'il y a upload imageFile est un objet
             // Sinon imageFile = null
@@ -63,6 +64,19 @@ class SeriesController extends AbstractController
     
 
             }
+
+            if($videoFile)
+            {
+                $nameVideo = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $videoFile->getClientOriginalExtension();
+
+                $videoFile->move(
+                    $this->getParameter("videoUpload"),
+                    $nameVideo
+                );
+
+                $series->setVideo($nameVideo);
+            }
+            //dd($series);
 
             
             //dd($series);
@@ -95,6 +109,7 @@ class SeriesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $imageFile = $form->get('imageFile')->getData();
+            $videoFile = $form->get('videoFile')->getData();
 
             // S'il y a upload imageFile est un objet
             // Sinon imageFile = null
@@ -122,6 +137,18 @@ class SeriesController extends AbstractController
 
 
 
+            }
+
+            if($videoFile)
+            {
+                $nameVideo = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $videoFile->getClientOriginalExtension();
+
+                $videoFile->move(
+                    $this->getParameter("videoUpload"),
+                    $nameVideo
+                );
+
+                $series->setVideo($nameVideo);
             }
             $series->setDateAt(new \DateTimeImmutable("now"));
             $entityManager->persist($series);

@@ -4,9 +4,6 @@
 {% endblock %}
 
 {% block body %}
-
-	<a class="" href="{{ path("series_ajouter") }}">Ajouter</a>
-
 	{% for notification in app.flashes("success") %}
 
 		<div class="">
@@ -16,7 +13,8 @@
 		</div>
 
 	{% endfor %}
-
+	<section class="tableau-serie">
+  
 	<table class="table">
 
 		<thead class="">
@@ -26,74 +24,98 @@
 				<th>Description</th>
 				<th>Genre</th>
 				<th>Image</th>
+				<th>Vidéo</th>
 				<th>Date de Création</th>
 				<th>Modifier</th>
 				<th>Supprimer</th>
+        <th>Ajouter une Serie</th>
 			</tr>
 		</thead>
 
-		<tbody class="tbody-movies">
-			{% for series in series %}
-				<tr>
+			<tbody class="tbody-movies">
+				{% for series in series %}
+					<tr>
 
-					<td>{{ series.id }}</td>
-					<td>{{ series.title }}</td>
-					<td>{{ series.description }}</td>
-					<td>
-						{% if series.genre[0] is defined %}{% endif %}
 
-						{% for genre in series.genre %}
+						<td>{{ series.id }}</td>
+						<td>{{ series.title }}</td>
+						<td>{{ series.description }}</td>
+						<td>
+							{% if series.genre[0] is defined %}{% endif %}
 
-							{% if series.genre|last == genre %}
+							{% for genre in series.genre %}
 
-								{{ genre.type }}
+								{% if series.genre|last == genre %}
+
+									{{ genre.type }}
+
+								{% else %}
+
+									{{ genre.type }}
+
+								{% endif %}
+
+							{% endfor %}
+
+						</td>
+						<td>
+
+							{% if series.image %}
+
+								<img src="{{ asset("img/upload/"~ series.image ) }}" alt="" style="width:100px">
 
 							{% else %}
 
-								{{ genre.type }}
+								<img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
 
 							{% endif %}
 
-						{% endfor %}
 
-					</td>
+
 					<td>
 
-						{% if series.image %}
+						{% if series.video %}
 
-							<img src="{{ asset("img/upload/"~ series.image ) }}" alt="" style="width:100px">
+							<iframe src="{{ asset("img/upload/"~ series.video ) }}" frameborder="0"></iframe>
 
 						{% else %}
 
-							<img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
+							<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
 
 						{% endif %}
 
-
 					</td>
 
-					<td>{{ series.dateAt|date('d/m/Y H:i:s') }}</td>
 
-					<td class="btn-update">
-						<a href="{{ path('series_modifier', {'id': series.id}) }}">Modifier</a>
-					</td>
+		
 
-					<td class="btn-delete">
-						<a href="{{ path('series_supprimer', {'id' : series.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+						<td>{{ series.dateAt|date('d/m/Y H:i:s') }}</td>
 
-					</td>
+						<td class="btn-update">
+							<a href="{{ path('series_modifier', {'id': series.id}) }}">Modifier</a>
+						</td>
 
-				</tr>
+						<td class="btn-delete">
+							<a href="{{ path('series_supprimer', {'id' : series.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
 
-			{% else %}
+						</td>
+						<td>
+							<a class="btn-ajout-serie" href="{{ path("series_ajouter") }}">Ajouter</a>
+						</td>
 
-				<tr>
-					<td colspan="2">Il n'y a aucune série pour le moment</td>
-				</tr>
+					</tr>
 
-			{% endfor %}
+				{% else %}
 
-		</tbody>
+					<tr>
+						<td colspan="2">Il n'y a aucune série pour le moment</td>
+					</tr>
 
-	</table>
+				{% endfor %}
+
+			</tbody>
+
+		</table>
+
+	</section>
 {% endblock %}
