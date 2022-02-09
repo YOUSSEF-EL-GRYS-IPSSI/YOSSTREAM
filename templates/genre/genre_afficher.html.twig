@@ -1,69 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Tous les genres {% endblock %}
+{% block title %}
+	Tous les genres
+{% endblock %}
 
 {% block body %}
 
-    <a class="" href="{{ path("genre_ajouter") }}">Ajouter</a>
 
-    {% for notification in app.flashes("success") %}
 
-    <div class="">
+	{% for notification in app.flashes("success") %}
 
-        {{notification}}
-    
-    </div>
+		<div class="">
 
-{% endfor %}
+			{{notification}}
 
-    <table class="table">
+		</div>
 
-        <thead>
+	{% endfor %}
+	<section class="tableau-genre">
+		<table class="table">
 
-            <tr class="title-table">
+			<thead>
 
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Modifier</th>
-                <th>Supprimer</th> 
+				<tr class="title-table">
 
-            </tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Modifier</th>
+					<th>Supprimer</th>
+					<th>Ajout Genre</th>
 
-        </thead>
+				</tr>
 
-        <tbody class="tbody-movies espace">
-        {% for genre in genre %}
-            <tr>
+			</thead>
 
-                <td>{{ genre.id }}</td>
+			<tbody class="tbody-movies espace">
+				{% for genre in genre %}
+					<tr>
 
-                <td>{{ genre.type }}</td>
+						<td>{{ genre.id }}</td>
 
-                <td class="btn-update">
-                    <a href="{{ path('genre_modifier', {'id': genre.id}) }}">Modifier</a>
-                </td>
+						<td>{{ genre.type }}</td>
 
-                 <td class="btn-delete">
-                    <a href="{{ path('genre_supprimer', {'id' : genre.id } ) }}"
-                    onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
+						<td class="btn-update">
+							<a href="{{ path('genre_modifier', {'id': genre.id}) }}">Modifier</a>
+						</td>
 
-                </td>
+						<td class="btn-delete">
+							<a href="{{ path('genre_supprimer', {'id' : genre.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
 
-            </tr>
+						</td>
 
-        {% else %}
+						<td>
+							<a class="btn-ajout-genre" href="{{ path("genre_ajouter") }}">Ajouter</a>
+						</td>
 
-            <tr>
-                <td colspan="2">Il n'y a aucun genre pour le moment</td>
-            </tr>
+					</tr>
 
-        {% endfor %}
+				{% else %}
 
-        </tbody>
+					<tr>
+						<td colspan="2">Il n'y a aucun genre pour le moment</td>
+					</tr>
 
-    </table>
+				{% endfor %}
+
+			</tbody>
+
+		</table>
+
+	</section>
 {% endblock %}
-
-
-  
-
