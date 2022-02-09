@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Les Films YOSSTREAM
+	Les Film YOSSTREAM
 {% endblock %}
 
 {% block body %}
@@ -17,14 +17,13 @@
 		<thead>
 			<tr class="title-table">
 				<th>Id</th>
-				<th>titre</th>
-				<th>description</th>
-				<th>image</th>
+				<th>Titre</th>
+				<th>Description</th>
+				<th>Image</th>
 				<th>Genre</th>
-
-
-				<th>modifier</th>
-				<th>supprimer</th>
+				<th>Date</th>
+				<th>Modifier</th>
+				<th>Supprimer</th>
 
 			</tr>
 		</thead>
@@ -68,6 +67,7 @@
 
 					</td>
 
+					<td>{{ moviesArray.dateAt|date('d/m/Y H:i:s') }}</td>
 
 					<td class="btn-update">
 						<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
