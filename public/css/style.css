@@ -85,9 +85,26 @@ body {
 
 }
 
+.tableau-genre {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 76px;
+}
+
+.tableau-movies {
+  margin: 0 auto;
+  max-width: 1452px;
+  display: flex;
+  align-items: end;
+  height: 54vh;
+}
+
 .title-table th {
-  padding: 11px 27px;
+  padding: 27px 7px;
   font-size: 25px;
+
 }
 
 tbody:nth-child(odd) {
@@ -122,12 +139,9 @@ tbody:nth-child(even) {
 
 tbody {
   height: 49px;
-  height: 49px;
   font-size: 18px;
   font-weight: 600;
   text-align: center;
-
-
 }
 
 table {
@@ -160,13 +174,53 @@ table {
 
 }
 
-.btn-ajout-movies {
+.btn-ajout-movies, .btn-ajout-genre, .btn-ajout-serie {
   color: #fff;
   text-decoration: none;
   background: #0c2394;
-  padding: 10px;
-  font-size: 26px;
-  border-radius: 8px;
+  padding: 8px;
+  border-radius: 9px;
+
+}
+
+.tableau-serie {
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+}
+
+.tableau-serie table {
+  width: 90%;
+}
+/* /////////////tableau-user//////////////// */
+
+.tableau-user{
+  border-collapse: collapse;
+  box-shadow: 4px 7px 21px 3px #000000;
+
+}
+.tbody-user{
+  height: 49px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tbody-user:nth-child(odd) {
+  background-color: #000000;
+
+
+}
+
+.tbody-user:nth-child(even) {
+  background-color: #7a6f7a;
+
+}
+
+.title-user {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 0, 0, 1) 0%, rgba(36, 19, 20, 1) 85%);
+
 }
 
 
