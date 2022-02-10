@@ -31,7 +31,18 @@
             <h3> description  {{ moviesArray.description}}</h3>
             {# <a class="btn btn-danger mt-3" href="{{ path("fiche_produit", {'id' : moviesArray.id} ) }}">Afficher</a> #}
 
+            <div>
 
+            						{% if moviesArray.video %}
+
+							<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
+
+						{% else %}
+
+							<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+
+						{% endif %}
+            </div>
         
         
         
