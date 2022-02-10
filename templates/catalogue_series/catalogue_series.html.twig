@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Catalogue Séries {% endblock %}
+
+{% block h1 %} Catalogue {% endblock %}
+
+{% block body %}
+
+<h1 class=""> Liste des séries </h1>
+
+
+{% if series %}
+    {# card #}
+<div class="row justify-content-around ">
+{% for serieCatalogue in series %}
+
+    <div class="shadow col-md-3 m-3 text-center mt-4 p-4 bg-dark text-light ">
+
+        <a class="btn btn-danger mt-3" href="{{ path("fiche_serie", {'id' : serieCatalogue.id} ) }}">Afficher</a>
+
+        {% if serieCatalogue.image %}
+
+            <img class="align-middle" src="{{ asset("img/upload/"~ serieCatalogue.image ) }}" alt="" style="width:150px"> <br>
+                    
+        {% else %}
+                    
+            <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:150px"> <br>
+                    
+        {% endif %}
+        <h3> {{ serieCatalogue.title|capitalize}}</h3>
+        <h3> Description : {{ serieCatalogue.description}}</h3>
+
+        
+
+
+    
+    
+    
+    
+    </div>
+    
+{% endfor %}
+</div>
+    
+{% else %}
+
+<h4 class="text-danger text-center mt-3"> Il n'y a aucun produit dans le catalogue</h4>
+    
+{% endif %}
+
+
+
+
+{% endblock %}
