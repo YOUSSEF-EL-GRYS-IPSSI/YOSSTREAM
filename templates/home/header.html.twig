@@ -23,6 +23,10 @@
 						<a class="">ADMIN</a>
 					</li>
 					<li>
+						<a class="dropdown-item" href="{{ path('catalogue') }}">Liste des films</a>
+					</li>
+
+					<li>
 						<a class="dropdown-item" href="{{ path('movies_afficher') }}">Gestions des films</a>
 					</li>
 
@@ -65,6 +69,9 @@
 	{% else %}
 		<div>
 			<ul class="list-items">
+				<li>
+						<a class="dropdown-item" href="{{ path('catalogue') }}">Liste des films</a>
+					</li>
 				<li>
 					<a href="{{ path("home") }}">Accueil</a>
 				</li>

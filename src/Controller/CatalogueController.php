@@ -23,4 +23,5 @@ class CatalogueController extends AbstractController
             // 'series' => $series
         ]);
     }
+    
 }
