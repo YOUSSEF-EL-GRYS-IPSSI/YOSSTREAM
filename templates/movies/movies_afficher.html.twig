@@ -56,11 +56,15 @@
 
 							{% endif %}
 						</td>
+
 						
 						
 						<td>
 
+
 						{% if moviesArray.video %}
+
+						<td>
 
 							<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
 
@@ -74,6 +78,7 @@
 
 						
 							<td>
+
 							{% for genre in moviesArray.genre %}
 
 								{% if moviesArray.genre|last == genre %}
