@@ -76,6 +76,7 @@ class SeriesController extends AbstractController
 
                 $series->setVideo($nameVideo);
             }
+            
             //dd($series);
 
             
@@ -92,7 +93,7 @@ class SeriesController extends AbstractController
 
             return $this->redirectToRoute('series_afficher', [], Response::HTTP_SEE_OTHER);
         }
-
+        
         return $this->render('series/series_ajouter.html.twig', [
             'form' => $form->createView()
         ]);
