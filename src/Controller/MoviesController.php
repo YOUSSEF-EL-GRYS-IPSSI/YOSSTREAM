@@ -38,6 +38,8 @@ class MoviesController extends AbstractController
          {
 
             $imageFile = $form->get('image')->getData();
+            
+            $videoFile = $form->get('video')->getData();
    
             if($imageFile)
             {
@@ -53,10 +55,26 @@ class MoviesController extends AbstractController
 
             }
             
+
+            if ($videoFile) 
+            {
+                $nameVideo = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $videoFile->getClientOriginalExtension();
+
+                $videoFile->move(
+                    $this->getParameter("videoUpload"),
+                    $nameVideo
+                );
+
+                $movies->setVideo($nameVideo);
+            }
             
             $movies->setDateAt(new \DateTimeImmutable('now'));
+
             $entityManager->persist($movies);
+
             $entityManager->flush();
+
+            $this->addFlash("success", "Le film " . $movies->getTitre() . " a bien été ajoutée");
 
             
 
@@ -82,6 +100,7 @@ class MoviesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
           
             $imageFile = $form->get('imageFile')->getData();
+            $videoFile = $form->get('videoFile')->getData();
    
           
             if($imageFile)
@@ -97,13 +116,27 @@ class MoviesController extends AbstractController
 
 
             }
+
+
+
+            if ($videoFile) 
+            {
+                $nameVideo = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $videoFile->getClientOriginalExtension();
+
+                $videoFile->move(
+                    $this->getParameter("videoUpload"),
+                    $nameVideo
+                );
+
+                $movies->setVideo($nameVideo);
+            }
             
             
             $movies->setDateAt(new \DateTimeImmutable('now'));
             $entityManager->persist($movies);
             $entityManager->flush();
 
-            
+            $this->addFlash("success", "Le film " . $movies->getTitle() . " a bien été modifiée");
 
             return $this->redirectToRoute('movies_afficher', [], Response::HTTP_SEE_OTHER);
 
@@ -118,10 +151,11 @@ class MoviesController extends AbstractController
     #[Route('/supprimer/{id}', name: 'movies_supprimer', methods: ['GET','POST'])]
     public function movies_supprimer( Movies $movies, EntityManagerInterface $entityManager): Response
     {
-         
+            $moviesTitle = $movies->getTitle();
             $entityManager->remove($movies);
             $entityManager->flush();
         
+            $this->addFlash("success", "Le film $moviesTitle a bien été supprimée");
 
         return $this->redirectToRoute('movies_afficher');
 
@@ -129,4 +163,7 @@ class MoviesController extends AbstractController
 
         
     }
+
+    
+    
 }

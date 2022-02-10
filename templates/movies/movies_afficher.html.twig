@@ -1,10 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Les Films YOSSTREAM
+	Les Film YOSSTREAM
 {% endblock %}
 
 {% block body %}
+	{% for notification in app.flashes("success") %}
+
+		<div class="">
+
+			{{notification}}
+
+		</div>
+
+	{% endfor %}
 {% if movies  %}
 
 
@@ -16,12 +25,13 @@
 					<th>Titre</th>
 					<th>Description</th>
 					<th>Image</th>
+					<th>Vidéo</th>
 					<th>Genre</th>
 
 
 					<th>Modifier</th>
 					<th>Supprimer</th>
-					<th>Ajouter un film</th>
+			<th>Ajouter un film</th>
 
 				</tr>
 			</thead>
@@ -47,8 +57,28 @@
 							{% endif %}
 						</td>
 
+						
+						
+						<td>
+
+
+						{% if moviesArray.video %}
 
 						<td>
+
+							<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
+
+						{% else %}
+
+							<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+
+						{% endif %}
+
+					</td>
+
+						
+							<td>
+
 							{% for genre in moviesArray.genre %}
 
 								{% if moviesArray.genre|last == genre %}
@@ -70,6 +100,7 @@
 							<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
 						</td>
 
+					{# <td>{{ moviesArray.dateAt|date('d/m/Y H:i:s') }}</td> #}
 
 						<td class="btn-delete">
 

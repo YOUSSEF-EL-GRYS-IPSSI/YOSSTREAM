@@ -91,6 +91,25 @@ class MoviesType extends AbstractType
 
                 ]);
             }
+
+
+            if($options['ajouter'])
+            {
+                $builder->add('video', FileType::class, [
+                    "required" => false,
+                    //"multiple" => true,
+                        
+                ]);
+            }
+
+            elseif($options['modifier'])
+            {
+                $builder->add('videoFile', FileType::class, [
+                    "required" => false,
+                    "mapped" => false,
+
+                ]);
+            }
     }
         
         

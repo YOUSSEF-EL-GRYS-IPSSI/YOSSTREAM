@@ -1,0 +1,61 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} | Catalogue {% endblock %}
+
+{% block h1 %} Catalogue {% endblock %}
+
+{% block body %}
+
+<h1 class="text-center text-secondary"> Liste des articles </h1>
+
+
+ {% if movies %}
+        {# card #}
+    <div class=" ">
+       
+        {% for moviesArray in movies %}
+
+        <div class="">
+
+            {# {% if moviesArray.image %} #}
+
+                <img class="align-mid" src="{{ asset('img/upload/' ~ moviesArray.image ) }}" alt="" style="width:150px"> <br>
+                        
+            {# {% else %} #}
+                        
+                {# <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:150px"> <br> #}
+                        
+            {# {% endif %} #}
+            <h3> {{ moviesArray.titre|capitalize}}</h3>
+            <h3> description  {{ moviesArray.description}}</h3>
+            {# <a class="btn btn-danger mt-3" href="{{ path("fiche_produit", {'id' : moviesArray.id} ) }}">Afficher</a> #}
+
+            <div>
+
+            						{% if moviesArray.video %}
+
+							<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
+
+						{% else %}
+
+							<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+
+						{% endif %}
+            </div>
+        
+        
+        
+        
+        </div>
+      </div>   
+     {% endfor %}
+   
+        
+    {% else %}
+
+    <h4 class=""> Il n'y a aucun produit dans le catalogue</h4>
+        
+    {% endif %}
+
+    {% endblock %}
