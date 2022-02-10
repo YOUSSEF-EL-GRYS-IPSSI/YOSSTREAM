@@ -11,6 +11,7 @@ body {
 
 .header-nav {
   width: 100%;
+  padding: 12px 0px;
   background-color: black;
 }
 
@@ -187,19 +188,22 @@ table {
   margin: 0 auto;
   justify-content: center;
   display: flex;
+  margin-top: 50px;
 }
 
 .tableau-serie table {
   width: 90%;
 }
+
 /* /////////////tableau-user//////////////// */
 
-.tableau-user{
+.tableau-user {
   border-collapse: collapse;
   box-shadow: 4px 7px 21px 3px #000000;
 
 }
-.tbody-user{
+
+.tbody-user {
   height: 49px;
   font-size: 18px;
   font-weight: 600;
@@ -350,7 +354,7 @@ table {
   color: #fff;
   display: flex;
   flex-direction: column;
-  max-width: 40%;
+  /* max-width: 40%; */
   padding: 30px 19px;
   border-radius: 17px;
 }
@@ -477,6 +481,70 @@ table {
   top: 35px;
 }
 
+/* //////////////////Admin Information/////////////////// */
+.easy-admin {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.admin-information {
+  width: 58%;
+  height: auto;
+  background: #202020;
+  color: #fff;
+  border-radius: 14px;
+  box-shadow: 2px 0px 19px 1px #000000;
+
+}
+
+.title-admin-information {
+  width: 100%;
+  background-image: linear-gradient(to left, #601010, #861114, #ad0f17, #d50919, #ff0019);
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 14px;
+}
+
+.title-admin-information img {
+  width: 10%;
+}
+
+.admin-svg {
+  width: 50px;
+
+}
+
+.list-role {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  list-style: none;
+  width: 80%;
+
+
+}
+
+.list-role li {
+  margin-bottom: 10px;
+}
+
+.data-admin {
+  background: #06d30d;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.card-admin {
+  padding: 16px 8px;
+
+}
+
+
 /* /////////////////////////////////////////////////////////////////// */
 
 @media only screen and (max-width : 768px) {
@@ -531,6 +599,17 @@ table {
 
 
 
+}
+
+#croix img {
+  width: 15%;
+  position: relative;
+  top: 13px;
+  right: 13px;
+}
+
+#burger img {
+  width: 20%;
 }
 
 @media only screen and (min-width : 426px) {
@@ -604,6 +683,22 @@ table {
 
 }
 
+/* ////////403+404///////// */
+
+.section-interdit {
+  display: flex;
+  justify-content: center;
+
+}
+
+.btn-403, .btn-404 {
+  text-decoration: none;
+  color: #fff;
+  background: #f11111;
+  padding: 10px 21px;
+  border-radius: 11px;
+}
+
 @media only screen and (max-width : 320px) {
   #croix {
     display: flex;
@@ -623,6 +718,14 @@ table {
     position: relative;
     left: -15px;
     top: 12px;
+  }
+
+  .header-nav {
+    width: 206vw;
+  }
+
+  .connexion {
+    width: 206vw;
   }
 
 }
