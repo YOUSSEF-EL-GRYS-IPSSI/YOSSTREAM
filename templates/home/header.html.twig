@@ -23,7 +23,7 @@
 
 					<li class="">
 
-						<a class="">ADMINISTRATEUR</a>
+						<a href="{{ path('profil') }}">ADMINISTRATEUR</a>
 
 					</li>
 
@@ -71,13 +71,13 @@
 						<li>
 							<a class="dropdown-item" href="{{ path('catalogue_series') }}">Séries</a>
 						</li>
-				
-						<li>
-							<a href="{{ path("home") }}">Profil</a>
-						</li>
 
 						<li>
-							<a href="{{ path("app_logout") }}">Déconnexion</a>
+							<a href="{{ path('profil') }}">Profil</a>
+						</li>
+					
+						<li>
+							<a href="{{ path('app_logout') }}">Déconnexion</a>
 						</li>
 
 					</ul>
