@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Ajouter un genre {% endblock %}
+{% block title %}
+	Ajouter un genre
+{% endblock %}
 
 {% block body %}
+	<div class="lien-genre">
+		<a href="{{ path('genre_afficher') }}">Retour à la liste des genres</a>
+	</div>
+	<section class="section-form-genre">
+		{{ form_start(form,{
+            'attr':{
+            'class':'form-genre'
+            }
+        }) }}
+
+		<div class="labgenre">
+			{{ form_label(form.type) }}
+			{{ form_widget(form.type) }}
+			{{ form_errors(form.type) }}    
+		</div>
+		<div class="genre-button">
+			<input type="submit" value="Ajouter" class="btn-genre-ajouter">
+		</div>
+		{{ form_end(form) }}
+	</section>
 
 
-    {{ form_start(form) }}
-
-    {{ form_row(form.type) }}
-
-    <input type="submit" value="Ajouter" class="">
-
-    {{ form_end(form) }}
-
-
-
-    <a href="{{ path('genre_afficher') }}">Retour à la liste des genres</a>
-    
 {% endblock %}

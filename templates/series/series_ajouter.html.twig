@@ -1,26 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une série{% endblock %}
+{% block title %}Ajouter une série
+{% endblock %}
 
 {% block body %}
 
+	<div class="flex-movies">
+		<img class="next" src="{{ asset('img/next.svg') }}" alt="">
+		<button class="next-movies">
+			<a href="{{ path('series_afficher') }}">Retour à la liste des films</a>
+		</button>
+	</div>
 
-    {{ form_start(form) }}
+	{{ form_start(form,{
+        "attr": {
+            "class": 'formMovie'
+        }
+    }) }}
+	<div class="movie-flex">
 
-    {{ form_row(form.title) }}
+		{{ form_label(form.title) }}
+		{{ form_widget(form.title) }}
+		{{ form_errors(form.title) }}
+	</div>
+	<div class="movie-flex">
 
-    {{ form_row(form.description) }}
+		{{ form_label(form.description) }}
+		{{ form_widget(form.description) }}
+		{{ form_errors(form.description) }}
+	</div>
 
-    {{ form_row(form.image) }}
+	<div class="movie-flex">
+		{{ form_label(form.image) }}
+		{{ form_widget(form.image) }}
+		{{ form_errors(form.image) }}
+	</div>
 
-    {{ form_row(form.video) }}
+	<div class="movie-flex">
+		{{ form_label(form.video) }}
+		{{ form_widget(form.video) }}
+		{{ form_errors(form.video) }}
+	</div>
+	<div class="movie-flex">
+		{{ form_label(form.genre) }}
+		{{ form_widget(form.genre) }}
+		{{ form_errors(form.genre) }}
+	</div>
 
-    <input type="submit" value="Ajouter" class="">
+	<div class="movie-btn">
+		<input type="submit" value="Ajouter" class="btn-ajout">
+	</div>
 
-    {{ form_end(form) }}
+	{{ form_end(form) }}
 
 
+	
 
-    <a href="{{ path('series_afficher') }}">Retour à la liste des séries</a>
-    
 {% endblock %}
