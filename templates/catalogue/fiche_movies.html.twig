@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  {{ movie.titre}} {% endblock %}
+
+{% block h1 %} {{ movie.titre|capitalize }}   {% endblock %}
+
+{% block body %}
+
+    <div class="col-md-2 mx-auto text-center alert alert-danger">
+
+    {% if movie.image %}
+
+        <img class="d-block mx-auto" src="{{ asset("img/upload/"~ movie.image ) }}" alt="" style="width:300px"> <br>
+                    
+    {% else %}
+                    
+        <img class="d-block mx-auto" src="{{ asset("img/imageDefaul.jpg" ) }}" alt="" style="width:300px"> <br>
+                    
+    {% endif %}
+    
+    Description : {{ movie.description }} <br>
+    Genre : {% if movie.genre[0] is defined %}{% endif %}
+                {% for genre in movie.genre %}
+
+				    {% if movie.genre|last == genre %}
+
+						{{ genre.type }}
+
+					{% else %}
+
+							{{ genre.type }}
+
+					{% endif %}
+
+			{% endfor %}
+        <br>
+    Video : {% if movie.video %}
+
+				<iframe src="{{ asset("img/upload/"~ movie.video ) }}" frameborder="0"></iframe>
+
+			{% else %}
+
+				<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+
+			{% endif %}
+        <br>
+    Date de création : {{ movie.dateAt|date('d/m/Y H:i:s') }}
+
+    <a href="{{ path('catalogue') }}">Retour à la liste des film </a>
+    </div>
+
+
+
+{% endblock %}

@@ -12,18 +12,27 @@
 		<div class="logo-home">
 			<img src="{{ asset('img/logo.png') }}" alt="">
 		</div>
+
 		{% if app.user %}
+
 
 			{% if is_granted('ROLE_ADMIN') %}
 
 
 				<ul class="list-items-roleAdmin">
+
 					<li class="">
 
-						<a class="">ADMIN</a>
+						<a href="{{ path('profil') }}">ADMINISTRATEUR</a>
+
 					</li>
+
 					<li>
-						<a class="dropdown-item" href="{{ path('catalogue') }}">Liste des films</a>
+						<a class="dropdown-item" href="{{ path('catalogue') }}">Movies</a>
+					</li>
+
+					<li>
+						<a class="dropdown-item" href="{{ path('catalogue_series') }}">Séries</a>
 					</li>
 
 					<li>
@@ -55,29 +64,51 @@
 				<div>
 					<ul class="list-items">
 						<li>
-							<a href="{{ path("home") }}">Profil</a>
+							<a class="dropdown-item" href="{{ path('catalogue') }}">Movies</a>
 						</li>
+
+
 						<li>
-							<a href="{{ path("app_logout") }}">Déconnexion</a>
+							<a class="dropdown-item" href="{{ path('catalogue_series') }}">Séries</a>
 						</li>
+
+						<li>
+							<a href="{{ path('profil') }}">Profil</a>
+						</li>
+					
+						<li>
+							<a href="{{ path('app_logout') }}">Déconnexion</a>
+						</li>
+
 					</ul>
 				</div>
 			</nav>
 
 		{% endif %}
 
+		
+
 	{% else %}
 		<div>
 			<ul class="list-items">
+
 				<li>
-						<a class="dropdown-item" href="{{ path('catalogue') }}">Liste des films</a>
-					</li>
+					<a class="dropdown-item" href="{{ path('catalogue') }}">Movies</a>
+				</li>
+
+
+				<li>
+					<a class="dropdown-item" href="{{ path('catalogue_series') }}">Séries</a>
+				</li>
+				
 				<li>
 					<a href="{{ path("home") }}">Accueil</a>
 				</li>
+
 				<li>
 					<a href="{{ path("app_register") }}">Inscription</a>
 				</li>
+
 				<li>
 					<a href="{{ path("app_login") }}" id="connect">S'identifier</a>
 				</li>

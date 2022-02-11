@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modification du profil de {{ app.user.name }} {{ app.user.username }}  {% endblock %}
+
+{% block h1 %} Profil {% endblock %}
+
+{% block body %}
+
+
+    <div>
+        <h1>Modification Profil de {{ app.user.name }} {{ app.user.username }} </h1>
+
+          {{ form_start(form) }}
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+
+
+    {{ form_rest(form) }}
+
+{{ form_end(form) }}
+
+    </div>
+
+ 
+
+{% endblock %}

@@ -3,17 +3,20 @@
 {% block title %} Connexion | YosStream {% endblock %}
 
 {% block body %}
-{% for notification in app.flashes("success") %}
 
+
+		
+
+	
+
+	<section class="connexion">
+	{% for notification in app.flashes("success") %}
 		<div class="">
 
 			{{notification}}
 
 		</div>
-
 	{% endfor %}
-
-	<section class="connexion">
 
 		<form method="post" class="form-connect">
 
