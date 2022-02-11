@@ -48,7 +48,12 @@ class GenreController extends AbstractController
             $this->addFlash("success", "Le genre " . $genre->getType() . " a bien été ajouté");
 
             return $this->redirectToRoute('genre_afficher');
+            
+            
+            
         }
+        // dump($genre);
+        // dd($genre);
 
         return $this->render('genre/genre_ajouter.html.twig', [
             'form' => $form->createView()

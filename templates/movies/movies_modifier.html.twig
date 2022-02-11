@@ -3,23 +3,50 @@
 {% block title %} {{ parent() }} | Back Office | Gestions des séries {% endblock %}
 
 {% block body %}
+<section>
+		<div class="flex-movies">
+			<img class="next" src="{{ asset('img/next.svg') }}" alt="">
+			<button class="next-movies">
+				<a  href="{{ path('movies_afficher') }}">Retour à la liste des films</a>
+			</button>
+		</div>
+		{{ form_start(form,{
+        "attr": {
+            "class": 'formMovie'
+        }
+    }) }}
 
-
-    <a href="{{ path('movies_afficher') }}">Retour à la liste des films </a>
-
-    {{ form_start(form) }}
-
-        {{ form_row(form.titre) }}
-
-        {{ form_row(form.description) }}
-
-        {{ form_row(form.imageFile) }}
-
-    {{ form_rest(form) }}
-
-    <input type="submit" value="Modifier" class="">
-
-{{ form_end(form) }}
+		{# {{ form_row(form.titre) }} #}
+		<div class="movie-flex">
+			{{ form_label(form.titre) }}
+			{{ form_widget(form.titre) }}
+			{{ form_errors(form.titre) }}
+		</div>
+		<div class="movie-flex">
+			{{ form_label(form.description) }}
+			{{ form_widget(form.description) }}
+			{{ form_errors(form.description) }}
+		</div>
+		<div class="movie-flex">
+			{{ form_label(form.imageFile) }}
+			{{ form_widget(form.imageFile) }}
+			{{ form_errors(form.imageFile) }}
+		</div>
+        <div class="movie-flex">
+			{{ form_label(form.videoFile) }}
+			{{ form_widget(form.videoFile) }}
+			{{ form_errors(form.videoFile) }}
+		</div>
+		<div class="movie-flex">
+			{{ form_label(form.genre) }}
+			{{ form_widget(form.genre) }}
+			{{ form_errors(form.genre) }}
+		</div>
+		<div class="movie-btn">
+			<input type="submit" value="Modifier" class="btn-ajout">
+		</div>
+		{{ form_end(form) }}
+	</section>
 
 
 {% endblock %}

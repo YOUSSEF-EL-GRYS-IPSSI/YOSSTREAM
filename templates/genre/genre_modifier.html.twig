@@ -5,17 +5,26 @@
 {% block body %}
 
 
-    <a href="{{ path('genre_afficher') }}">Retour à la liste des genres</a>
+ <div class="lien-genre">
+		<a href="{{ path('genre_afficher') }}">Retour à la liste des genres</a>
+	</div>
+	<section class="section-form-genre">
+		{{ form_start(form,{
+            'attr':{
+            'class':'form-genre'
+            }
+        }) }}
 
-    {{ form_start(form) }}
-
-        {{ form_row(form.type) }}
-
-    {{ form_rest(form) }}
-
-    <input type="submit" value="Modifier" class="">
-
-{{ form_end(form) }}
+		<div class="labgenre">
+			{{ form_label(form.type) }}
+			{{ form_widget(form.type) }}
+			{{ form_errors(form.type) }}
+		</div>
+		<div class="genre-button">
+			<input type="submit" value="Modifier" class="btn-genre-ajouter">
+		</div>
+		{{ form_end(form) }}
+	</section>
 
 
 {% endblock %}

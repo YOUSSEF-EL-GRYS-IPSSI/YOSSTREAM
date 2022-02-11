@@ -10,7 +10,7 @@
 		<div class="flex-movies">
 			<img class="next" src="{{ asset('img/next.svg') }}" alt="">
 			<button class="next-movies">
-				<a  href="{{ path('movies_afficher') }}">Retour à la liste des films</a>
+				<a href="{{ path('movies_afficher') }}">Retour à la liste des films</a>
 			</button>
 		</div>
 		{{ form_start(form,{
@@ -21,6 +21,7 @@
 
 		{# {{ form_row(form.titre) }} #}
 		<div class="movie-flex">
+
 			{{ form_label(form.titre) }}
 			{{ form_widget(form.titre) }}
 			{{ form_errors(form.titre) }}
@@ -36,6 +37,13 @@
 			{{ form_errors(form.image) }}
 		</div>
 		<div class="movie-flex">
+			{{ form_label(form.video) }}
+			{{ form_widget(form.video) }}
+			{{ form_errors(form.video) }}
+		</div>
+		<div class="movie-flex">
+		<div class="flex-genre">
+		<div>
 			{{ form_label(form.genre) }}
 			{{ form_widget(form.genre) }}
 			{{ form_errors(form.genre) }}
