@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220210160823 extends AbstractMigration
+final class Version20220210163446 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -26,8 +26,8 @@ final class Version20220210160823 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-
+    
         $this->addSql('ALTER TABLE movies DROP video, CHANGE titre titre VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE description description VARCHAR(255) NOT NULL COLLATE `utf8mb4_unicode_ci`, CHANGE image image VARCHAR(255) DEFAULT NULL COLLATE `utf8mb4_unicode_ci`');
-
+        
     }
 }
