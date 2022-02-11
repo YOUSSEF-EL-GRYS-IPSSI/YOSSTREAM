@@ -20,7 +20,7 @@ class MoviesType extends AbstractType
     {
         $builder
         ->add('titre', TextType::class, [ 
-        "label" => "Titre du films",
+        "label" => "Titre du film",
         "required" => false,
         "attr" => [
             "placeholder" => " ajouter le titre du film",

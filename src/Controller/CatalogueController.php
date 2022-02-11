@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Movies;
 use App\Repository\MoviesRepository;
 use App\Repository\SeriesRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,4 +25,14 @@ class CatalogueController extends AbstractController
         ]);
     }
     
+    #[Route('/fiche_movies/{id}', name: 'fiche_movies', methods: ['GET', 'POST'])]
+    public function fiche_serie(Movies $movies) : Response
+    {
+
+
+        return $this->render('catalogue/fiche_movies.html.twig' , [
+          "movie" => $movies
+          
+        ]);
+    }
 }

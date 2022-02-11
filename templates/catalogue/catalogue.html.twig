@@ -18,18 +18,17 @@
 
         <div class="">
 
-            {# {% if moviesArray.image %} #}
+             <a class="btn btn-danger mt-3" href="{{ path("fiche_movies", {'id' : moviesArray.id} ) }}">Afficher</a>
+
+            
 
                 <img class="align-mid" src="{{ asset('img/upload/' ~ moviesArray.image ) }}" alt="" style="width:150px"> <br>
-                        
-            {# {% else %} #}
-                        
-                {# <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:150px"> <br> #}
-                        
-            {# {% endif %} #}
+            
             <h3> {{ moviesArray.titre|capitalize}}</h3>
+
             <h3> description  {{ moviesArray.description}}</h3>
-            {# <a class="btn btn-danger mt-3" href="{{ path("fiche_produit", {'id' : moviesArray.id} ) }}">Afficher</a> #}
+
+            {
 
             <div>
 
