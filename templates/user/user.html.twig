@@ -6,38 +6,39 @@
 {% block body %}
 
 
-	<section class="easy-admin">
+	<section
+		class="easy-admin">
 		{# <table class="tableau-user">
-														<thead>
-															<tr class="title-user">
-																<th>Email</th>
-																<th>Roles</th>
-																<th>Password</th>
-																<th>Name</th>
-																<th>Username</th>
-																<th>actions</th>
-															</tr>
-														</thead>
-														<tbody class="tbody-user">
-															{% for user in users %}
-																<tr>
-																	<td>{{ user.email }}</td>
-																	<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-																	<td>{{ user.password }}</td>
-																	<td>{{ user.name }}</td>
-																	<td>{{ user.username }}</td>
-																	<td>
-																		<a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-																		<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-																	</td>
-																</tr>
-															{% else %}
-																<tr>    
-																	<td colspan="7">no records found</td>
-																</tr>
-															{% endfor %}
-														</tbody>
-													</table> #}
+																<thead>
+																	<tr class="title-user">
+																		<th>Email</th>
+																		<th>Roles</th>
+																		<th>Password</th>
+																		<th>Name</th>
+																		<th>Username</th>
+																		<th>actions</th>
+																	</tr>
+																</thead>
+																<tbody class="tbody-user">
+																	{% for user in users %}
+																		<tr>
+																			<td>{{ user.email }}</td>
+																			<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+																			<td>{{ user.password }}</td>
+																			<td>{{ user.name }}</td>
+																			<td>{{ user.username }}</td>
+																			<td>
+																				<a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+																				<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+																			</td>
+																		</tr>
+																	{% else %}
+																		<tr>    
+																			<td colspan="7">no records found</td>
+																		</tr>
+																	{% endfor %}
+																</tbody>
+															</table> #}
 
 
 		<div class="admin-information">
@@ -48,28 +49,29 @@
 			</div>
 			<div class="card-admin">
 				{% for user in users %}
-					<ul class="list-role">
-						<li>Nom</li>
-						<li class="data-admin">{{ user.name }}</li>
-					</ul>
-					<ul class="list-role">
-						<li>Prénom</li>
-						<li class="data-admin">{{ user.username }}</li>
-					</ul>
-					<ul class="list-role">
-						<li>Rôle</li>
-						<li class="data-admin">{{ user.roles ? user.roles|json_encode : '' }}</li>
-					</ul>
-					<ul class="list-role">
-						<li>Email</li>
-						<li class="data-admin">{{ user.email }}</li>
-					</ul>
+					
+						<ul class="list-role">
+							<li>Nom</li>
+							<li class="data-admin">{{ user.name }}</li>
+						</ul>
+						<ul class="list-role">
+							<li>Prénom</li>
+							<li class="data-admin">{{ user.username }}</li>
+						</ul>
+						<ul class="list-role">
+							<li>Rôle</li>
+							<li class="data-admin">{{ user.roles ? user.roles|json_encode : '' }}</li>
+						</ul>
+						<ul class="list-role">
+							<li>Email</li>
+							<li class="data-admin">{{ user.email }}</li>
+						</ul>
 					
 
 					{# <button>
-						<a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-						<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-					</button> #}
+											<a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+											<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+										</button> #}
 					{% else %}
 
 				{% endfor %}

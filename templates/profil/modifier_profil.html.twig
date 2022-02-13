@@ -1,28 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Modification du profil de {{ app.user.name }} {{ app.user.username }}  {% endblock %}
+{% block title %}
+	Modification du profil de
+	{{ app.user.name }}
+	{{ app.user.username }}
+{% endblock %}
 
-{% block h1 %} Profil {% endblock %}
+{% block h1 %}
+	Profil
+{% endblock %}
 
 {% block body %}
+	<section class="section-profil">
+
+		<div class="card-profil">
+			<img src="{{ asset('img/wave.svg') }}" alt="">
+			<h1>Modification Profil de
+				{{ app.user.name }}
+				{{ app.user.username }}
+			</h1>
+
+			{{ form_start(form) }}
+
+			{{ form_row(form.name) }}
+			{{ form_row(form.username) }}
+			{{ form_row(form.email) }}
 
 
-    <div>
-        <h1>Modification Profil de {{ app.user.name }} {{ app.user.username }} </h1>
+			{{ form_rest(form) }}
 
-          {{ form_start(form) }}
+			{{ form_end(form) }}
 
-            {{ form_row(form.name) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.email) }}
+		</div>
 
-
-    {{ form_rest(form) }}
-
-{{ form_end(form) }}
-
-    </div>
-
- 
+	</section>
 
 {% endblock %}

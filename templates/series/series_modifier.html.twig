@@ -5,23 +5,53 @@
 {% block body %}
 
 
-    <a href="{{ path('series_afficher') }}">Retour à la liste des séries</a>
+    <div class="flex-movies">
+		<img class="next" src="{{ asset('img/next.svg') }}" alt="">
+		<button class="next-movies">
+			<a href="{{ path('series_afficher') }}">Retour à la liste des films</a>
+		</button>
+	</div>
 
-    {{ form_start(form) }}
+	{{ form_start(form,{
+        "attr": {
+            "class": 'formMovie'
+        }
+    }) }}
+	<div class="movie-flex">
 
-        {{ form_row(form.title) }}
+		{{ form_label(form.title) }}
+		{{ form_widget(form.title) }}
+		{{ form_errors(form.title) }}
+	</div>
+	<div class="movie-flex">
 
-        {{ form_row(form.description) }}
+		{{ form_label(form.description) }}
+		{{ form_widget(form.description) }}
+		{{ form_errors(form.description) }}
+	</div>
 
-        {{ form_row(form.imageFile) }}
+	<div class="movie-flex">
+		{{ form_label(form.imageFile) }}
+		{{ form_widget(form.imageFile) }}
+		{{ form_errors(form.imageFile) }}
+	</div>
 
-        {{ form_row(form.videoFile) }}
+	<div class="movie-flex">
+		{{ form_label(form.videoFile) }}
+		{{ form_widget(form.videoFile) }}
+		{{ form_errors(form.videoFile) }}
+	</div>
+	<div class="movie-flex">
+		{{ form_label(form.genre ) }}
+		{{ form_widget(form.genre) }}
+		{{ form_errors(form.genre) }}
+	</div>
 
-    {{ form_rest(form) }}
+	<div class="movie-btn">
+		<input type="submit" value="Modifier" class="btn-ajout">
+	</div>
 
-    <input type="submit" value="Modifier" class="">
-
-{{ form_end(form) }}
+	{{ form_end(form) }}
 
 
 {% endblock %}

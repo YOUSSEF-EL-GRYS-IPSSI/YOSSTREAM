@@ -15,11 +15,15 @@ class ModifProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('username', TextType::class)
+            ->add('name', TextType::class, [
+                'label' => 'Nom'
+            ])
+            ->add('username', TextType::class,[
+                'label'=>'Prénom'
+                
+            ])
             ->add('Valider', SubmitType::class)
-            ->add('email', EmailType::class)
-        ;
+            ->add('email', EmailType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

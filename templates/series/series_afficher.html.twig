@@ -14,30 +14,33 @@
 
 	{% endfor %}
 	<section class="tableau-serie">
-  
-	<table class="table">
 
-		<thead class="">
-			<tr class="title-table">
-				<th>Id</th>
-				<th>Titre</th>
-				<th>Description</th>
-				<th>Genre</th>
-				<th>Image</th>
-				<th>Vidéo</th>
-				<th>Date de Création</th>
-				<th>Modifier</th>
-				<th>Supprimer</th>
-        <th>Ajouter une Serie</th>
-			</tr>
-		</thead>
+		<table class="table">
+
+			<thead class="">
+				<tr
+					class="title-table">
+					{# <th>Id</th> #}
+					<th>Titre</th>
+					<th>Description</th>
+					<th>Genre</th>
+					<th>Image</th>
+					<th>Vidéo</th>
+					<th>Date de Création</th>
+					<th>Modifier</th>
+					<th>Supprimer</th>
+					<th>
+						<a class="btn-ajout-serie" href="{{ path("series_ajouter") }}">Ajouter</a>
+					</th>
+				</tr>
+			</thead>
 
 			<tbody class="tbody-movies">
 				{% for series in series %}
 					<tr>
 
 
-						<td>{{ series.id }}</td>
+						{# <td>{{ series.id }}</td> #}
 						<td>{{ series.title }}</td>
 						<td>{{ series.description }}</td>
 						<td>
@@ -66,28 +69,23 @@
 
 							{% else %}
 
-								<img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:100px">
+								<img src="{{ asset("img/imageDefaul.jpg" ) }}" alt="" style="width:100px">
+							{% endif %}
+						</td>
+						<td>
+
+							{% if series.video %}
+
+								<iframe src="{{ asset("img/upload/"~ series.video ) }}" frameborder="0"></iframe>
+
+							{% else %}
+
+								<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
 
 							{% endif %}
 
+						</td>
 
-
-					<td>
-
-						{% if series.video %}
-
-							<iframe src="{{ asset("img/upload/"~ series.video ) }}" frameborder="0"></iframe>
-
-						{% else %}
-
-							<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
-
-						{% endif %}
-
-					</td>
-
-
-		
 
 						<td>{{ series.dateAt|date('d/m/Y H:i:s') }}</td>
 
@@ -100,7 +98,7 @@
 
 						</td>
 						<td>
-							<a class="btn-ajout-serie" href="{{ path("series_ajouter") }}">Ajouter</a>
+							{# <a class="btn-ajout-serie" href="{{ path("series_ajouter") }}">Ajouter</a> #}
 						</td>
 
 					</tr>
