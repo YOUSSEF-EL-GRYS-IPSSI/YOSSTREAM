@@ -1,36 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Profil {% endblock %}
+{% block title %}
+	Profil
+{% endblock %}
 
-{% block h1 %} Profil {% endblock %}
+{% block h1 %}
+	Profil
+{% endblock %}
 
 {% block body %}
-    <div> 
-    {% for message in app.flashes('message') %}
-        <div>
-        {{ message }}
-        </div>
-        
-    {% endfor %}
-    </div>
+	<a class="myButton"href="{{ path('home') }}">Retour à l'accueil</a>
+	<section class="section-profil">
+		<div class="card-profil">
+        <img src="{{ asset('img/wave.svg') }}" alt="">
+			<div>
+				{% for message in app.flashes('message') %}
+					<div>
+						{{ message }}
+					</div>
 
-    <div>
-        <h1> Profil de {{ app.user.name }} {{ app.user.username }} </h1>
-    </div>
+				{% endfor %}
+			</div>
 
-    <div class="">
-        Nom : {{ app.user.name }} <br>
-        Prénom : {{ app.user.username }} <br>
-        Email : {{ app.user.email }}
+			<div>
+				<h1>
+					Profil de
+					{{ app.user.name }}
+					{{ app.user.username }}
+				</h1>
+			</div>
 
-        <a href="{{ path('home') }}">Retour à l'accueil</a>
-    </div>
+			<div class="">
+				Nom :
+				{{ app.user.name }}
+				<br>
+				Prénom :
+				{{ app.user.username }}
+				<br>
+				Email :
+				{{ app.user.email }}
 
-    <div>
-        <a href="{{ path('modifier_profil') }}">Modifier le profil</a>
-        <a href="">Modifier le mot de passe</a>
-    </div>
 
+			</div>
+
+			<div class="btn-profil">
+				<button class="buttonClass">
+					<a href="{{ path('modifier_profil') }}">Modifier le profil</a>
+
+				</button>
+				<button class="buttonRed"><a href="">Modifier le mot de passe</a></button>
+			</div>
+		</div>
+	</section>
 
 
 {% endblock %}

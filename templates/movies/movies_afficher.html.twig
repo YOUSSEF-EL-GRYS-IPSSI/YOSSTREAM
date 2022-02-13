@@ -5,23 +5,24 @@
 {% endblock %}
 
 {% block body %}
-	{% for notification in app.flashes("success") %}
+{% for notification in app.flashes("success") %}
 
-		<div class="">
+	<div class="">
 
-			{{notification}}
+		{{notification}}
 
-		</div>
+	</div>
 
-	{% endfor %}
+{% endfor %}
 {% if movies  %}
 
 
 	<section class="tableau-movies">
 		<table class="table">
 			<thead>
-				<tr class="title-table">
-					<th>Id</th>
+				<tr
+					class="title-table">
+					{# <th>Id</th> #}
 					<th>Titre</th>
 					<th>Description</th>
 					<th>Image</th>
@@ -31,7 +32,10 @@
 
 					<th>Modifier</th>
 					<th>Supprimer</th>
-			<th>Ajouter un film</th>
+					<th>
+						<a class="btn-ajout-movies" href="{{ path('movies_ajouter') }}">ajouter
+						</a>
+					</th>
 
 				</tr>
 			</thead>
@@ -42,7 +46,7 @@
 				{% for moviesArray in movies %}
 
 					<tr>
-						<td>{{ moviesArray.id }}</td>
+						{# <td>{{ moviesArray.id }}</td> #}
 						<td>{{ moviesArray.titre }}</td>
 						<td>{{ moviesArray.description }}</td>
 
@@ -57,27 +61,24 @@
 							{% endif %}
 						</td>
 
-						
-						
-						<td>
-
-
-						{% if moviesArray.video %}
 
 						<td>
 
-							<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
 
-						{% else %}
+							{% if moviesArray.video %}
 
-							<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+								<td>
 
-						{% endif %}
+									<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
 
-					</td>
+								{% else %}
 
-						
-							<td>
+									<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+
+								{% endif %}
+							</td>
+						</td>
+						<td>
 
 							{% for genre in moviesArray.genre %}
 
@@ -100,15 +101,15 @@
 							<a href="{{ path('movies_modifier', {'id': moviesArray.id}) }}">Modifier</a>
 						</td>
 
-					{# <td>{{ moviesArray.dateAt|date('d/m/Y H:i:s') }}</td> #}
+						{# <td>{{ moviesArray.dateAt|date('d/m/Y H:i:s') }}</td> #}
 
 						<td class="btn-delete">
 
 							<a href="{{ path('movies_supprimer', {'id' : moviesArray.id } ) }}" onclick="return confirm('Souhaitez-vous vraiment supprimer ce produit?')">Supprimer</a>
 						</td>
 						<td>
-							<a class="btn-ajout-movies" href="{{ path('movies_ajouter') }}">ajouter
-							</a>
+							{# <a class="btn-ajout-movies" href="{{ path('movies_ajouter') }}">ajouter
+														</a> #}
 						</td>
 					</tr>
 

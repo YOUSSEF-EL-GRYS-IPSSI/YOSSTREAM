@@ -1,54 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}  Catalogue Séries {% endblock %}
+{% block title %}
+	Catalogue Séries
+{% endblock %}
 
-{% block h1 %} Catalogue {% endblock %}
+{% block h1 %}
+	Catalogue
+{% endblock %}
 
 {% block body %}
-
-<h1 class=""> Liste des séries </h1>
-
-
-{% if series %}
-    {# card #}
-<div class="row justify-content-around ">
-{% for serieCatalogue in series %}
-
-    <div class="shadow col-md-3 m-3 text-center mt-4 p-4 bg-dark text-light ">
-
-        <a class="btn btn-danger mt-3" href="{{ path("fiche_serie", {'id' : serieCatalogue.id} ) }}">Afficher</a>
-
-        {% if serieCatalogue.image %}
-
-            <img class="align-middle" src="{{ asset("img/upload/"~ serieCatalogue.image ) }}" alt="" style="width:150px"> <br>
-                    
-        {% else %}
-                    
-            <img src="{{ asset("img/imageDefault.jpg" ) }}" alt="" style="width:150px"> <br>
-                    
-        {% endif %}
-        <h3> {{ serieCatalogue.title|capitalize}}</h3>
-        <h3> Description : {{ serieCatalogue.description}}</h3>
-
-        
+	<div class="title-serie">
+		<h1 class="">
+			Liste des séries
+		</h1>
+	</div>
+	<section class="section-catalogue-series">
 
 
-    
-    
-    
-    
-    </div>
-    
-{% endfor %}
-</div>
-    
-{% else %}
+		{% if series %}
 
-<h4 class="text-danger text-center mt-3"> Il n'y a aucun produit dans le catalogue</h4>
-    
-{% endif %}
+			{# card #}
+			<div class="card-flex">
+
+				{% for serieCatalogue in series %}
+
+					<div class="card-series">
+
+						{% if serieCatalogue.image %}
+							<div>
+								<img
+								class="align-middle" src="{{ asset("img/upload/"~ serieCatalogue.image ) }}" alt="" style="width:150px">
+							{# <br> #}
+							</div>
 
 
+						{% else %}
+							<div>
+								<img
+								src="{{ asset("img/imageDefaul.jpg" ) }}" alt="" style="width:197px">
+							{# <br> #}
+							</div>
 
+						{% endif %}
+						<h3>
+							{{ serieCatalogue.title|capitalize}}
+						</h3>
+						<h3 class="description-serie">
+							<br>Description :<br>
+							{{ serieCatalogue.description}}
+						</h3>
+						<div class="test">
+
+
+							<button class="button-48" role="button">
+								<span class="text">
+									<a href="{{ path("fiche_serie", {'id' : serieCatalogue.id} ) }}">Afficher</a>
+								</span>
+							</button>
+						</div>
+
+					</div>
+
+				{% endfor %}
+			</div>
+
+		{% else %}
+
+			<h4 class="text-danger text-center mt-3">
+				Il n'y a aucun produit dans le catalogue</h4>
+
+		{% endif %}
+
+
+	</section>
 
 {% endblock %}
