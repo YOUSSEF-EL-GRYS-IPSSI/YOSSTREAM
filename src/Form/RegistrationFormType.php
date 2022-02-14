@@ -24,7 +24,7 @@ class RegistrationFormType extends AbstractType
             ->add('email',EmailType::class,[
                 'label' => 'Votre email',
                 'attr' => [
-                    'placeholder' => 'veuillez saisir une adresse mail'],
+                    'placeholder' => 'Veuillez saisir une adresse mail'],
                 'constraints' => [new Length(['max' => 60])],
             ])
             ->add('name',TextType::class,[
@@ -58,7 +58,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'label'=>"Votre Mot de passe",
                 'attr' => ['autocomplete' => 'new-password',
-                            'placeholder' => 'veuillez saisir un mot de pass'],
+                            'placeholder' => 'Veuillez saisir un mot de passe'],
                 
                 'constraints' => [
                     new NotBlank([

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modification du mot de passe
+	{{ app.user.name }}
+	{{ app.user.username }}
+{% endblock %}
+
+{% block h1 %}
+	Profil
+{% endblock %}
+
+{% block body %}
+
+{% for notification in app.flashes("success") %}
+
+	{% set var = value %}
+
+	<pre>
+		{{ dump() }}
+	</pre>
+
+	<div class="">
+
+		{{notification}}
+
+	</div>
+
+{% endfor %}
+
+	<section class="section-profil">
+
+		<div class="card-profil">
+			<img src="{{ asset('img/wave.svg') }}" alt="">
+			<h1>Modification du mot de passe de 
+				{{ app.user.name }}
+				{{ app.user.username }}
+			</h1>
+
+			{{ form_start(form) }}
+
+
+			{{ form_rest(form) }}
+
+			{{ form_end(form) }}
+
+		</div>
+
+	</section>
+
+{% endblock %}

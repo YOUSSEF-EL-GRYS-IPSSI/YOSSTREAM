@@ -8,8 +8,36 @@
 
 		<div class="">
 
-			{{notification}}
 
+	<section
+		class="easy-admin">
+
+		<div class="admin-information">
+			<div class="title-admin-information">
+				<h3>Admin information
+				</h3>
+				<img src="{{ asset('img/admin.svg') }}" alt="">
+			</div>
+			<div class="card-admin">
+				{% for user in users %}
+					
+						<ul class="list-role">
+							<li>Nom</li>
+							<li class="data-admin">{{ user.name }}</li>
+						</ul>
+						<ul class="list-role">
+							<li>Prénom</li>
+							<li class="data-admin">{{ user.username }}</li>
+						</ul>
+						<ul class="list-role">
+							<li>Rôle</li>
+							<li class="data-admin">{{ user.roles ? user.roles|json_encode : '' }}</li>
+						</ul>
+						<ul class="list-role">
+							<li>Email</li>
+							<li class="data-admin">{{ user.email }}</li>
+						</ul>
+			
 		</div>
 
 	{% endfor %}
@@ -25,6 +53,7 @@
 					<th>Prenom</th>
 					<th>Role</th>
 					<th>Email</th>
+
 					
 				</tr>
 			</thead>
