@@ -1,54 +1,121 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}  {{ movie.titre}} {% endblock %}
+{% block title %}
+	{{ movie.titre}}
+{% endblock %}
 
-{% block h1 %} {{ movie.titre|capitalize }}   {% endblock %}
+{% block h1 %}
+	{{ movie.titre|capitalize }}
+{% endblock %}
 
 {% block body %}
+	<section class="section-affichage-serie">
+		<div class="flex-serie-affichage">
+			<div>
 
-    <div class="col-md-2 mx-auto text-center alert alert-danger">
+				{% if movie.image %}
 
-    {% if movie.image %}
+					<img class="d-block mx-auto" src="{{ asset("img/upload/"~ movie.image ) }}" alt="" style="width:300px">
+					<br>
 
-        <img class="d-block mx-auto" src="{{ asset("img/upload/"~ movie.image ) }}" alt="" style="width:300px"> <br>
-                    
-    {% else %}
-                    
-        <img class="d-block mx-auto" src="{{ asset("img/imageDefaul.jpg" ) }}" alt="" style="width:300px"> <br>
-                    
-    {% endif %}
-    
-    Description : {{ movie.description }} <br>
-    Genre : {% if movie.genre[0] is defined %}{% endif %}
-                {% for genre in movie.genre %}
+				{% else %}
 
-				    {% if movie.genre|last == genre %}
+					<img class="d-block mx-auto" src="{{ asset("img/imageDefaul.jpg" ) }}" alt="" style="width:300px">
+					<br>
 
-						{{ genre.type }}
+				{% endif %}
+			</div>
 
+			<div class="serie-affich">
+				{% if movie.titre %}
+					<div class="title-get-serie">
+						<h3>{{ movie.titre }}</h3>
+					</div>
 					{% else %}
 
-							{{ genre.type }}
+				{% endif %}
+				<div class="serie-description">
+					<p>{{ movie.description }}</p>
 
-					{% endif %}
+				</div>
+				<div class="genre-date-serie">
+					<p>
+						{% if movie.genre[0] is defined %}{% endif %}
+						{% for genre in movie.genre %}
 
-			{% endfor %}
-        <br>
-    Video : {% if movie.video %}
+							{% if movie.genre|last == genre %}
 
-				<iframe src="{{ asset("img/upload/"~ movie.video ) }}" frameborder="0"></iframe>
+								{{ genre.type }}
 
+							{% else %}
+
+								{{ genre.type }}
+
+							{% endif %}
+
+						{% endfor %}
+					</p>
+				</div>
+				{# Video :
+																								{% if movie.video %}
+																				
+																									<iframe src="{{ asset("img/upload/"~ movie.video ) }}" frameborder="0"></iframe>
+																				
+																								{% else %}
+																				
+																									<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+																				
+																								{% endif %}
+																								<br> #}
+				<div class="genre-date-serie">
+					Date de création :
+					{{ movie.dateAt|date('d/m/Y H:i:s') }}
+				</div>
+				<div class="watch-button">
+					<button class"button">voir le film
+						<img src="{{ asset('img/play.svg')}}" alt=""></button>
+				</div>
+
+				{# <a href="{{ path('catalogue') }}">Retour à la liste des film
+																				</a> #}
+			</div>
+		</div>
+
+		<div class="video-serie-affiche">
+			{% if movie.titre %}
+				<h1>{{ movie.titre }}</h1>
+
+			{% endif %}
+
+			{% if movie.video %}
+
+				<iframe src="{{ asset("img/upload/"~ serie.video ) }}" height="573px" width="1086px" frameborder="0"></iframe>
 			{% else %}
 
 				<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
 
 			{% endif %}
-        <br>
-    Date de création : {{ movie.dateAt|date('d/m/Y H:i:s') }}
 
-    <a href="{{ path('catalogue') }}">Retour à la liste des film </a>
-    </div>
 
+		</div>
+
+
+	</section>
+{% endblock %}
+
+{% block stylesheets %}
+
+	<style>
+		body {
+			background-color: #201c1c;
+		}
+
+		h1 {
+			text-align: center;
+			font-size: 94px;
+			padding: 23px;
+		}
+	</style>
 
 
 {% endblock %}

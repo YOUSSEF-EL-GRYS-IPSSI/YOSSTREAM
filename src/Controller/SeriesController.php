@@ -18,7 +18,7 @@ class SeriesController extends AbstractController
     public function series_afficher(SeriesRepository $seriesRepository): Response
     {
         $series = $seriesRepository->findAll();
-        
+
         return $this->render('series/series_afficher.html.twig', [
             'series' => $series
         ]);
@@ -33,8 +33,7 @@ class SeriesController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $imageFile = $form->get('image')->getData();
             $videoFile = $form->get('video')->getData();
@@ -42,7 +41,7 @@ class SeriesController extends AbstractController
             // S'il y a upload imageFile est un objet
             // Sinon imageFile = null
 
-            if($imageFile) // Si un fichier a été upload
+            if ($imageFile) // Si un fichier a été upload
             {
                 // Renommer l'image
                 // $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "-" .
@@ -57,16 +56,13 @@ class SeriesController extends AbstractController
                     $nameImage
                 );
 
-              
+
 
                 // Enregistrer le nom de l'image en bdd
                 $series->setImage($nameImage);
-    
-
             }
 
-            if($videoFile)
-            {
+            if ($videoFile) {
                 $nameVideo = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $videoFile->getClientOriginalExtension();
 
                 $videoFile->move(
@@ -76,10 +72,10 @@ class SeriesController extends AbstractController
 
                 $series->setVideo($nameVideo);
             }
-            
+
             //dd($series);
 
-            
+
             //dd($series);
 
             //dump($produit); 2ème étape de mes données
@@ -93,7 +89,7 @@ class SeriesController extends AbstractController
 
             return $this->redirectToRoute('series_afficher', [], Response::HTTP_SEE_OTHER);
         }
-        
+
         return $this->render('series/series_ajouter.html.twig', [
             'form' => $form->createView()
         ]);
@@ -107,15 +103,14 @@ class SeriesController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('imageFile')->getData();
             $videoFile = $form->get('videoFile')->getData();
 
             // S'il y a upload imageFile est un objet
             // Sinon imageFile = null
 
-            if($imageFile) // Si un fichier a été upload
+            if ($imageFile) // Si un fichier a été upload
             {
                 // Renommer l'image
                 // $nameImage = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "-" .
@@ -134,14 +129,9 @@ class SeriesController extends AbstractController
                 // Enregistrer le nom de l'image en bdd
 
                 $series->setImage($nameImage);
-                
-
-
-
             }
 
-            if($videoFile)
-            {
+            if ($videoFile) {
                 $nameVideo = date("YmdHis") . "-" . uniqid() . "-" . rand(100000, 999999) . "." . $videoFile->getClientOriginalExtension();
 
                 $videoFile->move(
@@ -169,11 +159,11 @@ class SeriesController extends AbstractController
     #[Route('/supprimer/{id}', name: 'series_supprimer', methods: ['GET', 'POST'])]
     public function series_supprimer(Series $series, EntityManagerInterface $entityManager): Response
     {
-            $seriesTitle = $series->getTitle();
-            $entityManager->remove($series);
-            $entityManager->flush();
-        
-            $this->addFlash("success", "La série $seriesTitle a bien été supprimée");
+        $seriesTitle = $series->getTitle();
+        $entityManager->remove($series);
+        $entityManager->flush();
+
+        $this->addFlash("success", "La série $seriesTitle a bien été supprimée");
 
         return $this->redirectToRoute('series_afficher');
     }
