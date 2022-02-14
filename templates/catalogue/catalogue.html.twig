@@ -1,60 +1,78 @@
- 
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ parent() }} | Catalogue {% endblock %}
+{% block title %}
+	{{ parent() }}
+	| Catalogue
+{% endblock %}
 
-{% block h1 %} Catalogue {% endblock %}
+{% block h1 %}
+	Catalogue
+{% endblock %}
 
 {% block body %}
+	<div class="title-serie">
+		<h1>
+			Liste des articles
+		</h1>
+	</div>
+	<section class="section-catalogue-series">
 
-<h1 class="text-center text-secondary"> Liste des articles </h1>
+		{% if movies %}
+			{# card #}
+			<div class="card-flex">
+
+				{% for moviesArray in movies %}
+
+					<div class="card-series">
 
 
- {% if movies %}
-        {# card #}
-    <div class=" ">
-       
-        {% for moviesArray in movies %}
+						{% if moviesArray.image %}
 
-        <div class="">
-
-             <a class="btn btn-danger mt-3" href="{{ path("fiche_movies", {'id' : moviesArray.id} ) }}">Afficher</a>
-
-            
-
-                <img class="align-mid" src="{{ asset('img/upload/' ~ moviesArray.image ) }}" alt="" style="width:150px"> <br>
-            
-            <h3> {{ moviesArray.titre|capitalize}}</h3>
-
-            <h3> description  {{ moviesArray.description}}</h3>
-
-            {
-
-            <div>
-
-            						{% if moviesArray.video %}
-
-							<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
-
+							<img src="{{ asset("img/upload/" ~ moviesArray.image) }}" alt="" style="width:200px">
 						{% else %}
+							<img src="{{ asset('img/imageDefaul.jpg')}} " alt="" style="width: 287px;">
 
-							<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
 
 						{% endif %}
-            </div>
-        
-        
-        
-        
-        </div>
-      </div>   
-     {% endfor %}
-   
-        
-    {% else %}
+						<br>
 
-    <h4 class=""> Il n'y a aucun produit dans le catalogue</h4>
-        
-    {% endif %}
+						<h3>
+							{{ moviesArray.titre|capitalize}}
+						</h3>
 
-    {% endblock %}
+						<h3 class="description-serie">
+							description
+							{{ moviesArray.description}}
+						</h3>
+
+						<button class="button-48" role="button">
+							<span class="text">
+								<a class="btn btn-danger mt-3" href="{{ path("fiche_movies", {'id' : moviesArray.id} ) }}">Afficher</a>
+							</span>
+						</button>
+						<div>
+
+							{% if moviesArray.video %}
+
+								<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
+
+							{% else %}
+
+								<img src="{{ asset("img/imageDefault.png" ) }}" alt="" style="width:100px">
+
+							{% endif %}
+						</div>
+
+
+					</div>
+				{% endfor %}
+
+
+			{% else %}
+
+				<h4 class="">
+					Il n'y a aucun produit dans le catalogue</h4>
+
+			{% endif %}
+		</section>
+	{% endblock %}
