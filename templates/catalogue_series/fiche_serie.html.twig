@@ -56,46 +56,72 @@
 					</p>
 				</div>
 
-				
+
 				{# {% if serie.video %}
+												
+																	<iframe src="{{ asset("img/upload/"~ serie.video ) }}" frameborder="0"></iframe>
+												
+																{% else %}
+												
+																	<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+												
+																{% endif %} #}
 
-					<iframe src="{{ asset("img/upload/"~ serie.video ) }}" frameborder="0"></iframe>
-
-				{% else %}
-
-					<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
-
-				{% endif %} #}
-				
 				<div class="genre-date-serie">
 
 					Date de création :
 					{{ serie.dateAt|date('d/m/Y H:i:s') }}
+				</div>
+
+				<div class="watch-button">
+					<button class"button">
+						<a href="#serie-affichage">voir la Serie</a>
+					</button>
 				</div>
 			</div>
 			{# <a href="{{ path('catalogue_series') }}">Retour à la liste des séries</a> #}
 		</div>
 
 
+		<div id="serie-affichage" class="video-serie-affiche">
+			{% if serie.title %}
+				<h1>{{ serie.title }}</h1>
+
+			{% endif %}
+
+			{% if serie.video %}
+
+				<iframe src="{{ asset("img/upload/"~ serie.video ) }}" height="573px" width="1086px" frameborder="0"></iframe>
+			{% else %}
+
+				<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
+
+			{% endif %}
 
 
-
-
-
-		<div class="video-serie-affiche">
-
-		{% if serie.video %}
-
-					<iframe src="{{ asset("img/upload/"~ serie.video ) }}" frameborder="0"></iframe>
-
-				{% else %}
-
-					<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
-
-				{% endif %} 
-		
-		
 		</div>
 
 	</section>
+
+
+{% endblock %}
+{% block stylesheets %}
+
+	<style>
+		body {
+			background-color: #201c1c;
+		}
+
+		h1 {
+			text-align: center;
+			font-size: 94px;
+			padding: 23px;
+		}
+		a{
+			text-decoration:none;
+			color:white;
+		}
+	</style>
+
+
 {% endblock %}

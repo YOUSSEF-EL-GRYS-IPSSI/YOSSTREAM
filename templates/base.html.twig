@@ -18,9 +18,12 @@
 		<div>
 			{% include "home/header.html.twig" %}
 		</div>
+
+		{% block stylesheets %}{% endblock %}
 	</head>
 
 	<body>
+	
 
 		{% block body %}{% endblock %}
 		<script src= "{{ asset('js/script.js') }}" ></script>

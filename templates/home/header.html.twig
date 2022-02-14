@@ -21,7 +21,7 @@
 
 				<ul class="list-items-roleAdmin">
 
-					<li class="">
+					<li class="admin-btn">
 
 						<a href="{{ path('profil') }}">ADMINISTRATEUR</a>
 
@@ -75,7 +75,7 @@
 						<li>
 							<a href="{{ path('profil') }}">Profil</a>
 						</li>
-					
+
 						<li>
 							<a class="btn-deconnect" href="{{ path('app_logout') }}">Déconnexion</a>
 						</li>
@@ -86,7 +86,6 @@
 
 		{% endif %}
 
-		
 
 	{% else %}
 		<div>
@@ -100,7 +99,7 @@
 				<li>
 					<a class="dropdown-item" href="{{ path('catalogue_series') }}">Séries</a>
 				</li>
-				
+
 				<li>
 					<a href="{{ path("home") }}">Accueil</a>
 				</li>
@@ -118,3 +117,16 @@
 
 
 {% endif %}
+
+{% block stylesheets %}
+
+
+	<style>
+		.admin-btn a {
+
+			background: #0080f0;
+			padding: 9px;
+			border-radius: 8px;
+		}
+	</style>
+{% endblock %}
