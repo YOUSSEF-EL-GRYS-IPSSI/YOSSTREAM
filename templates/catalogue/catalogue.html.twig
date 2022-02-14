@@ -50,18 +50,6 @@
 								<a class="btn btn-danger mt-3" href="{{ path("fiche_movies", {'id' : moviesArray.id} ) }}">Afficher</a>
 							</span>
 						</button>
-						<div>
-
-							{% if moviesArray.video %}
-
-								<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
-
-							{% else %}
-
-								<img src="{{ asset("img/imageDefault.png" ) }}" alt="" style="width:100px">
-
-							{% endif %}
-						</div>
 
 
 					</div>
@@ -75,4 +63,18 @@
 
 			{% endif %}
 		</section>
+	{% endblock %}
+
+	{% block stylesheets %}
+
+		<body>
+
+			<style>
+				.section-catalogue-series {
+					background: #1f1d1d;
+				}
+			</style>
+
+		</body>
+
 	{% endblock %}
