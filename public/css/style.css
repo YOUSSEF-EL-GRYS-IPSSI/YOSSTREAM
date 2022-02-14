@@ -598,6 +598,14 @@ table {
   margin-bottom: 10px;
 }
 
+.p1{
+  line-height: 2em;
+}
+
+.p2{
+  line-height: 300%;
+}
+
 .data-admin {
   background: #06d30d;
   padding: 3px;
@@ -862,8 +870,6 @@ table {
 /* ////////affichage serie////////////////// */
 
 .section-affichage-serie {
-  background-color: #272121;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -875,6 +881,7 @@ table {
   background-color: rgb(0, 0, 0);
   width: 72%;
   border-radius: 17px;
+  margin-top: 50px;
 }
 
 .title-get-serie h3 {
@@ -895,9 +902,26 @@ table {
   margin: 10px 0;
 }
 
-.video-serie-affiche{
-  margin-top: 133px;
+.watch-button {
+  display: flex;
+  justify-content: start;
+  margin: 35px 0 0 30px;
+}
 
+.watch-button button {
+  color: #fff;
+  background: #ec0000;
+  border: none;
+  font-size: 24px;
+  padding: 10px 26px;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.video-serie-affiche {
+  margin: 0 auto;
+  max-width: 150%;
+  margin-top: 133px;
 }
 
 /* .serie-affich {} */
