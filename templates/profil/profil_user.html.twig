@@ -9,6 +9,15 @@
 {% endblock %}
 
 {% block body %}
+
+{% for notification in app.flashes("success") %}
+
+		<div class="">
+
+			{{notification}}
+
+		</div>
+{% endfor %}
 	<a class="myButton"href="{{ path('home') }}">Retour à l'accueil</a>
 	<section class="section-profil">
 		<div class="card-profil">
@@ -48,7 +57,8 @@
 					<a href="{{ path('modifier_profil') }}">Modifier le profil</a>
 
 				</button>
-				<button class="buttonRed"><a href="">Modifier le mot de passe</a></button>
+				<button class="buttonRed">
+				<a href="{{ path('modifier_mdp') }}">Modifier le mot de passe</a></button>
 			</div>
 		</div>
 	</section>

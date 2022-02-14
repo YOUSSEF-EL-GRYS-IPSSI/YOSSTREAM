@@ -22,8 +22,7 @@ class ModifProfilType extends AbstractType
                 'label'=>'Prénom'
                 
             ])
-            ->add('Valider', SubmitType::class)
-            ->add('email', EmailType::class);
+            ->add('Valider', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
