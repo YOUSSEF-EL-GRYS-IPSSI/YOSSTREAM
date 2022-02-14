@@ -598,6 +598,14 @@ table {
   margin-bottom: 10px;
 }
 
+.p1{
+  line-height: 2em;
+}
+
+.p2{
+  line-height: 300%;
+}
+
 .data-admin {
   background: #06d30d;
   padding: 3px;

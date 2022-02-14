@@ -28,15 +28,12 @@
 					<th>Image</th>
 					<th>Vidéo</th>
 					<th>Genre</th>
-
-
 					<th>Modifier</th>
 					<th>Supprimer</th>
 					<th>
-						<a class="btn-ajout-movies" href="{{ path('movies_ajouter') }}">ajouter
+						<a class="btn-ajout-movies" href="{{ path('movies_ajouter') }}">Ajouter
 						</a>
 					</th>
-
 				</tr>
 			</thead>
 
@@ -67,17 +64,16 @@
 
 							{% if moviesArray.video %}
 
-								<td>
-
 									<iframe src="{{ asset("img/upload/"~ moviesArray.Video ) }}" frameborder="0"></iframe>
 
-								{% else %}
+							{% else %}
 
 									<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
 
-								{% endif %}
-							</td>
+							{% endif %}
+
 						</td>
+						
 						<td>
 
 							{% for genre in moviesArray.genre %}
