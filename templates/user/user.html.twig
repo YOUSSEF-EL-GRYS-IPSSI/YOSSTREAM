@@ -1,46 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index
+{% block title %}Toutes les séries
 {% endblock %}
 
 {% block body %}
+	{% for notification in app.flashes("success") %}
+
+		<div class="">
 
 
 	<section
 		class="easy-admin">
-
-		{# <table class="tableau-user">
-																<thead>
-																	<tr class="title-user">
-																		<th>Email</th>
-																		<th>Roles</th>
-																		<th>Password</th>
-																		<th>Name</th>
-																		<th>Username</th>
-																		<th>actions</th>
-																	</tr>
-																</thead>
-																<tbody class="tbody-user">
-																	{% for user in users %}
-																		<tr>
-																			<td>{{ user.email }}</td>
-																			<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-																			<td>{{ user.password }}</td>
-																			<td>{{ user.name }}</td>
-																			<td>{{ user.username }}</td>
-																			<td>
-																				<a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-																				<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-																			</td>
-																		</tr>
-																	{% else %}
-																		<tr>    
-																			<td colspan="7">no records found</td>
-																		</tr>
-																	{% endfor %}
-																</tbody>
-															</table> #}
-
 
 		<div class="admin-information">
 			<div class="title-admin-information">
@@ -67,19 +37,60 @@
 							<li>Email</li>
 							<li class="data-admin">{{ user.email }}</li>
 						</ul>
-					
+			
+		</div>
 
-					{# <button>
-											<a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-											<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-										</button> #}
-					{% else %}
+	{% endfor %}
+	<section class="tableau-serie">
+
+		<table class="table">
+
+			<thead class="">
+				<tr
+					class="title-table">
+					{# <th>Id</th> #}
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Role</th>
+					<th>Email</th>
+
+					
+				</tr>
+			</thead>
+
+			<tbody class="tbody-movies">
+				{%  for user in users %}
+					<tr class="">
+
+
+						{# <td>{{ series.id }}</td> #}
+					<td class="p1">{{ user.username }}</td>
+					<td class="p2">{{ user.name }}</td>
+					<td class="p2">{{ user.roles ? user.roles|json_encode  }}</td>
+					<td class="p2">{{ user.email }}</td>
+						
+					</tr>
+
+				{% else %}
+
+					<tr>
+						<td colspan="2"></td>
+					</tr>
 
 				{% endfor %}
-			</div>
-		</div>
-		
-	</section>
 
+			</tbody>
+
+		</table>
+
+	</section>
+{% endblock %}
+{% block stylesheets %}
+<style>
+tr:nth-child(odd){
+  background-color:black;
+}
+
+</style>
 
 {% endblock %}
