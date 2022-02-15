@@ -12,7 +12,7 @@
 
 {% for notification in app.flashes("success") %}
 
-		<div class="">
+		<div class="notifi">
 
 			{{notification}}
 
@@ -64,4 +64,18 @@
 	</section>
 
 
+{% endblock %}
+
+{% block stylesheets %}
+
+
+	<style>
+		
+		.notifi{
+			background: green;
+			padding: 10px 5px;
+			display: flex;
+			justify-content: center;
+		}
+	</style>
 {% endblock %}
