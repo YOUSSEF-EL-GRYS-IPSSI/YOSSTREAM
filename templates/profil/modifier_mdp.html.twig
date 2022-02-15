@@ -12,21 +12,20 @@
 
 {% block body %}
 
-{% for notification in app.flashes("success") %}
 
-	{% set var = value %}
 
-	<pre>
-		{{ dump() }}
-	</pre>
 
-	<div class="">
+{% for notification in app.flashes("nosuccess") %}
+	
+	<div class="notify">
 
 		{{notification}}
 
 	</div>
 
 {% endfor %}
+
+
 
 	<section class="section-profil">
 
@@ -39,8 +38,16 @@
 
 			{{ form_start(form) }}
 
-
+			
+			{# {{ form_label(form) }}
+			{{ form_widget(form) }}
+			{{ form_rest(form) }} #}
+			
 			{{ form_rest(form) }}
+			
+			
+			
+			
 
 			{{ form_end(form) }}
 
@@ -48,4 +55,21 @@
 
 	</section>
 
+{% endblock %}
+
+
+{% block stylesheets %}
+
+
+	<style>
+		.notify{
+			background: red;
+			padding: 10px 5px;
+			display: flex;
+			justify-content: center;
+		}
+		ul{
+			color:red;
+		}
+	</style>
 {% endblock %}
