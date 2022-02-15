@@ -27,3 +27,11 @@ croix.addEventListener('click', () => {
 
 
 
+///////////////////////////////
+
+// const question = document.querySelector(.foire-question'');
+
+// console.log(question);
+
+
+
