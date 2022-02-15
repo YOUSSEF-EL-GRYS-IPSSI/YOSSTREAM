@@ -6,12 +6,90 @@
 
 		<div class="title-slide">
 			<h1>Faites le plein d'émotions
-				
-				sur
-				<span>YosStream</span>
+																																																
+																																																sur<span>YosStream</span>
 			</h1>
 		</div>
 
-
 	</section>
+	<section class="story-card">
+		<div class="flex-card">
+			<div class="flex-gif">
+
+				<h2>Regardez YosStream sur votre TV.</h2>
+				<p>Regardez YosStream sur votre Smart TV, PlayStation, Xbox, Chromecast, Apple TV, lecteurs Blu-ray et bien plus.</p>
+			</div>
+
+			<div class="mac-gif">
+				<img src="{{ asset('img/mac.gif')}}" alt="">
+
+			</div>
+
+		</div>
+
+		<div class="flex-card">
+
+
+			<div class="mac-gif mobile-gif">
+				<img src="{{ asset('img/mobile.png')}}" alt="">
+
+			</div>
+
+			<div class="flex-gif flex-gif-mobile">
+
+				<h2>Où que vous soyez.</h2>
+				<p>Regardez des films et séries TV en accès illimité sur votre TV, smartphone, tablette et ordinateur, tout compris.</p>
+			</div>
+
+		</div>
+	</section>
+{% endblock %}
+
+
+{% block stylesheets %}
+
+	<style>
+		.story-card {
+
+			background: rgb(2, 0, 36);
+			background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,1,1,1) 59%, rgba(121,14,14,1) 100%);
+
+		}
+
+		.flex-card {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+			max-width: 1400px;
+			padding: 57px 0 0;
+
+
+		}
+
+		.mac-gif img {
+			width: 81%;
+		}
+
+		.flex-gif h2 {
+			font-size: 55px;
+			text-align: center;
+
+		}
+		.flex-gif p {
+			font-size: 21px;
+		}
+
+		.mobile-gif {
+			display: flex;
+			justify-content: center;
+		}
+
+		.flex-gif-mobile{
+			width: 57%;
+			text-align: center;
+		}
+	</style>
+
+
 {% endblock %}
