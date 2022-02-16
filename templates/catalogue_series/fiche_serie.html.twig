@@ -14,7 +14,7 @@
 			<div>
 				{% if serie.image %}
 
-					<img class="d-block mx-auto" src="{{ asset("img/upload/"~ serie.image ) }}" alt="" style="width:300px">
+					<img class="img-serie" src="{{ asset("img/upload/"~ serie.image ) }}" alt="">
 					<br>
 
 				{% else %}
@@ -91,7 +91,7 @@
 
 			{% if serie.video %}
 
-				<iframe src="{{ asset("img/upload/"~ serie.video ) }}" height="573px" width="1086px" frameborder="0"></iframe>
+				<iframe src="{{ asset("img/upload/"~ serie.video ) }}" frameborder="0"></iframe>
 			{% else %}
 
 				<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">

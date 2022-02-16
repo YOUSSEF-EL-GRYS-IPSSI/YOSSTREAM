@@ -22,6 +22,10 @@
 	{% endfor %}
 
 
+
+		
+
+
 			<div class="login-svg">
 				<img src="{{ asset('img/movie.svg') }}" alt="">
 			</div>
@@ -37,7 +41,7 @@
 				<div class="mb-3">
 					Vous êtes connecté en tant que
 					{{ app.user.username }},
-					<a href="{{ path('app_logout') }}">Logout</a>
+					<a href="{{ path('app_logout') }}">Déconnexion</a>
 				</div>
 
 			{% endif %}
@@ -78,15 +82,23 @@
 				</button>
 			</div>
 
+			<div>
+				<a href="{{path('app_forgot_password_request') }}">
+					Mot de passe oublié ?
+				</a>
+			</div>
+
 		</form>
 	</section>
 {% endblock %}
+
 {% block stylesheets %} 
 
 
 <style>
 
 .notifs{
+
 	display:flex;
 	justify-content:center;
 	color:green;
@@ -95,3 +107,4 @@
 </style>
 
 {% endblock %}
+
