@@ -10,16 +10,16 @@
 	
 
 	<section class="connexion">
-	{% for notification in app.flashes("success") %}
-		<div class="">
+	
+
+		<form method="post" class="form-connect">
+{% for notification in app.flashes("success") %}
+		<div class="notifs">
 
 			{{notification}}
 
 		</div>
 	{% endfor %}
-
-		<form method="post" class="form-connect">
-
 
 
 			<div class="login-svg">
@@ -80,4 +80,18 @@
 
 		</form>
 	</section>
+{% endblock %}
+{% block stylesheets %} 
+
+
+<style>
+
+.notifs{
+	display:flex;
+	justify-content:center;
+	color:green;
+}
+
+</style>
+
 {% endblock %}
