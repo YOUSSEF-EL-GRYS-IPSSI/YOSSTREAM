@@ -11,17 +11,21 @@
 
 	<section class="connexion">
 	
-		
-	
 
 		<form method="post" class="form-connect">
 {% for notification in app.flashes("success") %}
-<div class="login-valide">
+		<div class="notifs">
 
 			{{notification}}
 
 		</div>
-{% endfor %}
+	{% endfor %}
+
+
+
+		
+
+
 			<div class="login-svg">
 				<img src="{{ asset('img/movie.svg') }}" alt="">
 			</div>
@@ -87,11 +91,14 @@
 		</form>
 	</section>
 {% endblock %}
-{% block stylesheets %}
+
+{% block stylesheets %} 
+
 
 <style>
 
-.login-valide{
+.notifs{
+
 	display:flex;
 	justify-content:center;
 	color:green;
@@ -100,3 +107,4 @@
 </style>
 
 {% endblock %}
+
