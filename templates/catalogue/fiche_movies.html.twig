@@ -15,12 +15,12 @@
 
 				{% if movie.image %}
 
-					<img class="d-block mx-auto" src="{{ asset("img/upload/"~ movie.image ) }}" alt="" style="width:300px">
+					<img class="movie-img" src="{{ asset("img/upload/"~ movie.image ) }}" alt="">
 					<br>
 
 				{% else %}
 
-					<img class="d-block mx-auto" src="{{ asset("img/imageDefaul.jpg" ) }}" alt="" style="width:300px">
+					<img class="d-block mx-auto" src="{{ asset("img/imageDefaul.jpg" ) }}" alt="" style="width:300px">  
 					<br>
 
 				{% endif %}
@@ -29,7 +29,7 @@
 			<div class="serie-affich">
 				{% if movie.titre %}
 					<div class="title-get-serie">
-						<h3>{{ movie.titre }}</h3>
+						<h3 class="movie-title">{{ movie.titre }}</h3>
 					</div>
 					{% else %}
 
@@ -56,17 +56,7 @@
 						{% endfor %}
 					</p>
 				</div>
-				{# Video :
-																								{% if movie.video %}
-																				
-																									<iframe src="{{ asset("img/upload/"~ movie.video ) }}" frameborder="0"></iframe>
-																				
-																								{% else %}
-																				
-																									<img src="{{ asset("img/imageDefaulte.png" ) }}" alt="" style="width:100px">
-																				
-																								{% endif %}
-																								<br> #}
+	
 				<div class="genre-date-serie">
 					Date de création :
 					{{ movie.dateAt|date('d/m/Y H:i:s') }}
@@ -75,9 +65,6 @@
 					<button class"button">voir le film
 						<img src="{{ asset('img/play.svg')}}" alt=""></button>
 				</div>
-
-				{# <a href="{{ path('catalogue') }}">Retour à la liste des film
-																				</a> #}
 			</div>
 		</div>
 

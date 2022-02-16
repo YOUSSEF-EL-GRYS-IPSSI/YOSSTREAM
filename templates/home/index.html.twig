@@ -5,9 +5,7 @@
 	<section class="slider">
 
 		<div class="title-slide">
-			<h1>Faites le plein d'émotions
-																																																																																								
-																																																																																								sur<span>YosStream</span>
+			<h1>Faites le plein d'émotions sur<br><span>YosStream</span>
 			</h1>
 		</div>
 
@@ -16,18 +14,18 @@
 		<div class="flex-card">
 			<div class="flex-gif">
 
-				<h2>Regardez YosStream sur votre TV.</h2>
-				<p>Regardez YosStream sur votre Smart TV, PlayStation, Xbox, Chromecast, Apple TV, lecteurs Blu-ray et bien plus.</p>
+				<h2 id="mobile-title">Regardez YosStream sur votre TV.</h2>
+				<p class="p-index-mobile">Regardez YosStream sur votre Smart TV, PlayStation, Xbox, Chromecast, Apple TV, lecteurs Blu-ray et bien plus.</p>
 			</div>
 
 			<div class="mac-gif">
-				<img src="{{ asset('img/mac.gif')}}" alt="">
+				<img id="mac" src="{{ asset('img/mac.gif')}}" alt="">
 
 			</div>
 
 		</div>
 
-		<div class="flex-card">
+		<div id="flex-column" class="flex-card ">
 
 
 			<div class="mac-gif mobile-gif">
@@ -35,9 +33,9 @@
 
 			</div>
 
-			<div class="flex-gif flex-gif-mobile">
+			<div  class="flex-gif flex-gif-mobile">
 
-				<h2>Où que vous soyez.</h2>
+				<h2 id="flex-gif-m">Où que vous soyez.</h2>
 				<p>Regardez des films et séries TV en accès illimité sur votre TV, smartphone, tablette et ordinateur, tout compris.</p>
 			</div>
 
@@ -46,54 +44,58 @@
 	<section style="background: black;">
 		<div class="flex-foire">
 			<div class="title-question">
-				<h3>Foire aux questions</h3>
+				<h3 >Foire aux questions</h3>
 			</div>
 
 			<div>
-				<div class="foire-question">
+				<div class="foire-question-r">
 					<p>YosStream, qu'est-ce que c'est ?</p>
+					<img src="{{ asset('img/question.svg') }}" alt="">
 
 				</div>
-				<div class="reponse">
-					<p>
+				<div class="reponse-r">
+					<p class="pr p-q">
 						YosStream est un service de streaming qui propose une vaste sélection de séries TV, films, animes, documentaires et autres programmes primés     sur  des milliers d'appareils connectés à Internet.
-											 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
+																	 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
 					</p>
 				</div>
 
 				<div>
-					<div class="foire-question">
+					<div class="foire-question-a">
 						<p>YosStream, qu'est-ce que c'est ?</p>
+						<img src="{{ asset('img/question.svg') }}" alt="">
 
 					</div>
-					<div class="reponse">
-						<p>
+					<div class="reponse-a">
+						<p class="pa p-q">
 							YosStream est un service de streaming qui propose une vaste sélection de séries TV, films, animes, documentaires et autres programmes primés     sur  des milliers d'appareils connectés à Internet.
-												 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
+																			 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
 						</p>
 					</div>
 
 					<div>
-						<div class="foire-question">
+						<div class="foire-question-z">
 							<p>YosStream, qu'est-ce que c'est ?</p>
+							<img src="{{ asset('img/question.svg') }}" alt="">
 
 						</div>
-						<div class="reponse">
-							<p>
+						<div class="reponse-z">
+							<p class="pz p-q">
 								YosStream est un service de streaming qui propose une vaste sélection de séries TV, films, animes, documentaires et autres programmes primés     sur  des milliers d'appareils connectés à Internet.
-													 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
+																					 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
 							</p>
 						</div>
 
 						<div>
-							<div class="foire-question">
+							<div class="foire-question-e">
 								<p>YosStream, qu'est-ce que c'est ?</p>
+								<img src="{{ asset('img/question.svg') }}" alt="">
 
 							</div>
-							<div class="reponse">
-								<p>
+							<div class="reponse-e">
+								<p class="pe p-q">
 									YosStream est un service de streaming qui propose une vaste sélection de séries TV, films, animes, documentaires et autres programmes primés     sur  des milliers d'appareils connectés à Internet.
-														 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
+																							 Regardez tout ce que vous voulez, quand vous voulez, sans publicité et à un tarif mensuel très attractif. Découvrez de nouveaux films et séries TV chaque semaine, il y en a pour tous les goûts !
 								</p>
 							</div>
 
@@ -164,17 +166,38 @@
 			text-align: center;
 		}
 
-		.foire-question {
+		.foire-question-r,
+		.foire-question-a,
+		.foire-question-z,
+		.foire-question-e {
 			background: #3e3c3c;
 			padding: 10px;
 			font-size: 45px;
 			margin: 5px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
 		}
-		.reponse {
+
+		.foire-question-r img,
+		.foire-question-a img,
+		.foire-question-z img,
+		.foire-question-e img {
+			width: 5%;
+		}
+		.p-q {
 			background: #3e3c3c;
 			padding: 10px;
 			margin: 5px;
 			font-size: 25px;
+
+		}
+		.reponse-r .pr,
+		.reponse-a .pa,
+		.reponse-z .pz,
+		.reponse-e .pe {
+			display: none;
+
 		}
 		.flex-foire {
 			display: flex;
