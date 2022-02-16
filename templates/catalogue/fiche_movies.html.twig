@@ -62,13 +62,15 @@
 					{{ movie.dateAt|date('d/m/Y H:i:s') }}
 				</div>
 				<div class="watch-button">
-					<button class"button">Voir le film
-						<img src="{{ asset('img/play.svg')}}" alt=""></button>
+					<button class"button">
+						<img src="{{ asset('img/play.svg')}}" alt="">
+						<a href="#movie-affichage">Voir le Film</a>
+					</button>
 				</div>
 			</div>
 		</div>
 
-		<div class="video-serie-affiche">
+		<div id="movie-affichage" class="video-serie-affiche">
 			{% if movie.titre %}
 				<h1>{{ movie.titre }}</h1>
 
