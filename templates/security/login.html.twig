@@ -37,7 +37,7 @@
 				<div class="mb-3">
 					Vous êtes connecté en tant que
 					{{ app.user.username }},
-					<a href="{{ path('app_logout') }}">Logout</a>
+					<a href="{{ path('app_logout') }}">Déconnexion</a>
 				</div>
 
 			{% endif %}
@@ -76,6 +76,12 @@
 				<button class="btn-login" type="submit">
 					Se connecter
 				</button>
+			</div>
+
+			<div>
+				<a href="{{path('app_forgot_password_request') }}">
+					Mot de passe oublié ?
+				</a>
 			</div>
 
 		</form>
