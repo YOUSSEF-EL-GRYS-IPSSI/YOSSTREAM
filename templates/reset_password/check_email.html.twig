@@ -1,11 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Envoi du courriel de réinitialisation du mot de passe{% endblock %}
+{% block title %}Envoi du courriel de réinitialisation du mot de passe
+{% endblock %}
 
 {% block body %}
-    <p>
-        Si un compte correspondant à votre adresse e-mail existe, alors un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.
-        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
-    </p>
-    <p>Si vous ne recevez pas d'e-mail, vérifiez votre dossier de courrier indésirable (spam) ou votre adresse e-mail. <a href="{{ path('app_forgot_password_request') }}">Réessayer</a>.</p>
+	<section id="courriel-envoie" class="courriel-envoie">
+		<p>
+			Si un compte correspondant à votre adresse e-mail existe, alors un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.
+															        Ce lien expirera dans
+			{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+		</p>
+		<p>Si vous ne recevez pas d'e-mail, vérifiez votre dossier de courrier indésirable (spam) ou votre adresse e-mail.
+		</p>
+		<a id="btn-res" href="{{ path('app_forgot_password_request') }}">Réessayer</a>
+	</section>
+{% endblock %}
+
+{% block stylesheets %}
+
+
+	<style>
+		body {
+			background: #320e0e;
+
+		}
+
+		.courriel-envoie {
+			padding: 11px;   
+			line-height: 89px;
+			height: 100vh;
+		}
+
+		#btn-res {
+			text-decoration: none;
+			color: #000;
+			box-shadow: 0 1px 0 0 #fff6af;
+			background-color:#ffec64;
+			padding: 14px 29px;
+			border-radius: 5px;
+		}
+	}
+	</style>
 {% endblock %}
